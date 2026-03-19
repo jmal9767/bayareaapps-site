@@ -4,539 +4,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bay Area Apps LLC – Mobile Apps That Elevate Your Experience</title>
-    <meta name="description" content="Bay Area Apps LLC builds thoughtful mobile applications rooted in real-world expertise. Download CritterCare Advice App — pet health guidance from 20 years of veterinary experience.">
-
-```
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17879194407"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-17879194407');
-</script>
-
-<!-- Event snippet for Page view conversion page -->
-<script>
-    gtag('event', 'conversion', {'send_to': 'AW-17879194407/T5ctCMTN44ocEKe2u81C'});
-</script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-
-<style>
-    :root {
-        --bg-primary: #0a0a0c;
-        --bg-card: #141418;
-        --bg-card-hover: #1a1a20;
-        --accent: #3b82f6;
-        --accent-glow: rgba(59, 130, 246, 0.15);
-        --text-primary: #f0f0f2;
-        --text-secondary: #9090a0;
-        --text-muted: #606070;
-        --border: rgba(255, 255, 255, 0.06);
-        --radius: 16px;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        font-family: 'DM Sans', sans-serif;
-        background: var(--bg-primary);
-        color: var(--text-primary);
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-    }
-
-    /* ---- NAV ---- */
-    nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        padding: 20px 32px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        backdrop-filter: blur(20px);
-        background: rgba(10, 10, 12, 0.8);
-        border-bottom: 1px solid var(--border);
-    }
-
-    .logo {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.3rem;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        color: var(--text-primary);
-        text-decoration: none;
-    }
-
-    .logo span {
-        color: var(--accent);
-    }
-
-    .nav-links {
-        display: flex;
-        gap: 32px;
-        list-style: none;
-    }
-
-    .nav-links a {
-        color: var(--text-secondary);
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 400;
-        transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-        color: var(--text-primary);
-    }
-
-    /* ---- HERO ---- */
-    .hero {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 120px 24px 80px;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: -200px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-        pointer-events: none;
-    }
-
-    .hero-badge {
-        display: inline-block;
-        padding: 8px 20px;
-        border: 1px solid var(--border);
-        border-radius: 100px;
-        font-size: 0.8rem;
-        color: var(--text-secondary);
-        margin-bottom: 40px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        background: var(--bg-card);
-    }
-
-    .hero h1 {
-        font-family: 'Playfair Display', serif;
-        font-size: clamp(2.5rem, 6vw, 4.5rem);
-        font-weight: 700;
-        line-height: 1.1;
-        letter-spacing: -0.03em;
-        max-width: 700px;
-        margin-bottom: 24px;
-    }
-
-    .hero h1 em {
-        font-style: italic;
-        color: var(--accent);
-    }
-
-    .hero p {
-        font-size: 1.1rem;
-        color: var(--text-secondary);
-        max-width: 500px;
-        margin-bottom: 48px;
-        line-height: 1.7;
-    }
-
-    .cta-group {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 16px 32px;
-        border-radius: 100px;
-        font-size: 0.95rem;
-        font-weight: 500;
-        text-decoration: none;
-        transition: all 0.3s;
-        font-family: 'DM Sans', sans-serif;
-    }
-
-    .btn-primary {
-        background: var(--accent);
-        color: #fff;
-        border: none;
-    }
-
-    .btn-primary:hover {
-        background: #2563eb;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3);
-    }
-
-    .btn-secondary {
-        background: transparent;
-        color: var(--text-primary);
-        border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-        background: var(--bg-card);
-        border-color: rgba(255, 255, 255, 0.12);
-    }
-
-    /* ---- APP SECTION ---- */
-    .section {
-        padding: 100px 24px;
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-
-    .section-label {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: var(--accent);
-        margin-bottom: 16px;
-    }
-
-    .section h2 {
-        font-family: 'Playfair Display', serif;
-        font-size: clamp(2rem, 4vw, 3rem);
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        margin-bottom: 20px;
-    }
-
-    .section > p {
-        color: var(--text-secondary);
-        max-width: 600px;
-        margin-bottom: 48px;
-        font-size: 1.05rem;
-        line-height: 1.7;
-    }
-
-    .app-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 48px;
-        display: flex;
-        gap: 48px;
-        align-items: center;
-        transition: border-color 0.3s;
-    }
-
-    .app-card:hover {
-        border-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .app-icon {
-        width: 120px;
-        height: 120px;
-        border-radius: 28px;
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        flex-shrink: 0;
-    }
-
-    .app-info h3 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 4px;
-    }
-
-    .app-info .subtitle {
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        margin-bottom: 16px;
-    }
-
-    .app-info p {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-        line-height: 1.7;
-        margin-bottom: 24px;
-    }
-
-    .app-meta {
-        display: flex;
-        gap: 24px;
-        flex-wrap: wrap;
-    }
-
-    .meta-item {
-        font-size: 0.8rem;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-    }
-
-    .meta-item strong {
-        display: block;
-        color: var(--text-primary);
-        font-size: 0.95rem;
-        text-transform: none;
-        letter-spacing: 0;
-        margin-top: 4px;
-    }
-
-    /* ---- ABOUT ---- */
-    .about-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 24px;
-    }
-
-    .about-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 36px;
-    }
-
-    .about-card .icon {
-        font-size: 2rem;
-        margin-bottom: 20px;
-    }
-
-    .about-card h3 {
-        font-size: 1.15rem;
-        font-weight: 600;
-        margin-bottom: 12px;
-    }
-
-    .about-card p {
-        color: var(--text-secondary);
-        font-size: 0.9rem;
-        line-height: 1.7;
-    }
-
-    /* ---- CONTACT ---- */
-    .contact-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-    }
-
-    .contact-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 36px;
-    }
-
-    .contact-card h3 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 8px;
-    }
-
-    .contact-card p {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-    }
-
-    .contact-card a {
-        color: var(--accent);
-        text-decoration: none;
-    }
-
-    .contact-card a:hover {
-        text-decoration: underline;
-    }
-
-    /* ---- FOOTER ---- */
-    footer {
-        border-top: 1px solid var(--border);
-        padding: 40px 24px;
-        text-align: center;
-    }
-
-    footer p {
-        color: var(--text-muted);
-        font-size: 0.85rem;
-    }
-
-    footer a {
-        color: var(--text-secondary);
-        text-decoration: none;
-    }
-
-    footer a:hover {
-        color: var(--text-primary);
-    }
-
-    /* ---- RESPONSIVE ---- */
-    @media (max-width: 768px) {
-        nav {
-            padding: 16px 20px;
-        }
-
-        .nav-links {
-            display: none;
-        }
-
-        .app-card {
-            flex-direction: column;
-            text-align: center;
-            padding: 36px 24px;
-        }
-
-        .app-meta {
-            justify-content: center;
-        }
-
-        .contact-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .section {
-            padding: 60px 20px;
-        }
-    }
-
-    /* ---- ANIMATIONS ---- */
-    @keyframes fadeUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .hero-badge, .hero h1, .hero p, .cta-group {
-        animation: fadeUp 0.8s ease-out forwards;
-        opacity: 0;
-    }
-
-    .hero h1 { animation-delay: 0.1s; }
-    .hero p { animation-delay: 0.2s; }
-    .cta-group { animation-delay: 0.3s; }
-</style>
-```
-
+    <title>Bay Area Apps LLC – App Development Studio</title>
+    <meta name="description" content="Bay Area Apps LLC is a mobile app development studio building apps across every category — health, food, games, productivity, and more.">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16932498498"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-16932498498');</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--black:#0A0A0A;--black-light:#111;--black-card:#161616;--red:#D4262C;--red-dark:#A81E23;--red-glow:rgba(212,38,44,0.2);--gold:#C9A84C;--gold-light:#E0C56A;--gold-dim:rgba(201,168,76,0.12);--white:#F5F0E8;--white-dim:rgba(245,240,232,0.55);--white-faint:rgba(245,240,232,0.07)}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Barlow',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--white-faint)}.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:3px;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:0.6rem}.logo-mark{width:30px;height:30px;background:linear-gradient(135deg,var(--red),var(--red-dark));border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;letter-spacing:0;font-weight:700;box-shadow:0 2px 10px var(--red-glow)}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--white-dim);text-decoration:none;font-size:0.8rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.3s}.nav-links a:hover{color:var(--gold)}.nav-menu-btn{display:none;background:none;border:none;color:var(--white);font-size:1.4rem;cursor:pointer}.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,var(--red-glow) 0%,transparent 70%);pointer-events:none;animation:glow 8s ease-in-out infinite alternate}@keyframes glow{0%{opacity:0.5;transform:translateX(-50%) scale(1)}100%{opacity:0.8;transform:translateX(-50%) scale(1.1)}}.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.45rem 1.1rem;border:1px solid var(--gold-dim);border-radius:100px;font-size:0.7rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;animation:fadeUp 0.7s ease-out}.hero-badge::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,9vw,7.5rem);line-height:0.95;letter-spacing:3px;margin-bottom:1.5rem;animation:fadeUp 0.7s ease-out 0.1s both}.hero h1 .red{color:var(--red)}.hero h1 .gold{color:var(--gold)}.hero-sub{font-size:1.1rem;font-weight:300;color:var(--white-dim);max-width:500px;line-height:1.7;margin-bottom:2.5rem;animation:fadeUp 0.7s ease-out 0.2s both}.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fadeUp 0.7s ease-out 0.3s both}@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.btn-primary{padding:0.85rem 1.8rem;background:linear-gradient(135deg,var(--red),var(--red-dark));color:var(--white);text-decoration:none;font-weight:600;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase;border-radius:6px;border:none;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 18px var(--red-glow)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px var(--red-glow)}.btn-ghost{padding:0.85rem 1.8rem;background:transparent;color:var(--gold);text-decoration:none;font-weight:600;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase;border-radius:6px;border:1px solid var(--gold-dim);cursor:pointer;transition:all 0.3s}.btn-ghost:hover{background:var(--gold-dim);border-color:var(--gold);transform:translateY(-2px)}section{padding:5.5rem 2rem;max-width:1140px;margin:0 auto}.section-label{font-family:'Bebas Neue',sans-serif;font-size:0.8rem;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:0.6rem}.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);letter-spacing:2px;line-height:1;margin-bottom:0.75rem}.section-desc{font-weight:300;color:var(--white-dim);max-width:550px;line-height:1.7;font-size:1rem;margin-bottom:2.5rem}.divider{max-width:1140px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,var(--white-faint),var(--gold-dim),var(--white-faint),transparent)}.apps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}.app-card{background:var(--black-card);border:1px solid var(--white-faint);border-radius:14px;padding:1.75rem;transition:all 0.35s ease;position:relative;overflow:hidden}.app-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--red),var(--gold));opacity:0;transition:opacity 0.35s}.app-card:hover{border-color:rgba(201,168,76,0.15);transform:translateY(-3px);box-shadow:0 10px 36px rgba(0,0,0,0.5)}.app-card:hover::after{opacity:1}.app-header{display:flex;align-items:center;gap:0.9rem;margin-bottom:1rem}.app-icon{width:52px;height:52px;border-radius:13px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.4rem}.app-icon img{width:100%;height:100%;object-fit:cover}.app-icon.placeholder{background:linear-gradient(135deg,var(--black-light),#1c1c1c);border:1px solid var(--white-faint)}.app-category{font-size:0.7rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}.app-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:1.5px}.app-card p{color:var(--white-dim);font-weight:300;line-height:1.6;font-size:0.92rem;margin-bottom:1.25rem}.status{display:inline-flex;align-items:center;gap:0.35rem;font-size:0.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:0.35rem 0.8rem;border-radius:100px}.status.live{background:rgba(46,125,50,0.12);color:#66BB6A;border:1px solid rgba(46,125,50,0.25)}.status.live::before{content:'';width:5px;height:5px;background:#66BB6A;border-radius:50%;animation:pulse 2s ease-in-out infinite}.status.dev{background:var(--gold-dim);color:var(--gold);border:1px solid rgba(201,168,76,0.25)}.store-link{display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.6rem;padding:0.5rem 1rem;background:var(--white);color:var(--black);font-weight:600;font-size:0.75rem;letter-spacing:0.5px;text-decoration:none;border-radius:7px;transition:all 0.3s}.store-link:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(245,240,232,0.12)}.store-link svg{width:14px;height:14px}.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}.pillar{padding:1.75rem;border:1px solid var(--white-faint);border-radius:12px;background:var(--black-card);transition:border-color 0.3s}.pillar:hover{border-color:rgba(212,38,44,0.2)}.pillar-icon{font-size:1.4rem;margin-bottom:0.85rem}.pillar h3{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:1.5px;margin-bottom:0.4rem}.pillar p{font-weight:300;color:var(--white-dim);line-height:1.6;font-size:0.88rem}.contact-section{text-align:center}.contact-section .section-desc{margin-left:auto;margin-right:auto}.contact-row{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}.contact-card{padding:1.25rem 2rem;background:var(--black-card);border:1px solid var(--white-faint);border-radius:10px;transition:border-color 0.3s}.contact-card:hover{border-color:rgba(201,168,76,0.25)}.contact-card h4{font-family:'Bebas Neue',sans-serif;font-size:0.8rem;letter-spacing:2px;color:var(--gold);margin-bottom:0.3rem}.contact-card a{color:var(--white);text-decoration:none;font-weight:400;transition:color 0.3s}.contact-card a:hover{color:var(--gold-light)}.contact-card p{color:var(--white-dim);font-weight:300}footer{text-align:center;padding:2.5rem 2rem;border-top:1px solid var(--white-faint);color:var(--white-dim);font-size:0.78rem;font-weight:300}footer a{color:var(--gold);text-decoration:none}footer a:hover{text-decoration:underline}@media(max-width:768px){nav{padding:0.9rem 1.25rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);padding:1.25rem 1.5rem;gap:1rem;border-bottom:1px solid var(--white-faint)}.nav-links.open{display:flex}.nav-menu-btn{display:block}.hero{padding:6.5rem 1.5rem 3rem}section{padding:3.5rem 1.5rem}.apps-grid{grid-template-columns:1fr}.pillars{grid-template-columns:1fr}}
+    </style>
 </head>
 <body>
-
-```
-<nav>
-    <a href="#" class="logo">Bay Area <span>Apps</span></a>
-    <ul class="nav-links">
-        <li><a href="#apps">Apps</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
-
-<section class="hero">
-    <div class="hero-badge">Bay Area Apps LLC</div>
-    <h1>Mobile Apps That <em>Elevate</em> Your Experience</h1>
-    <p>Thoughtful applications built from real-world expertise. Designed to make everyday life a little easier.</p>
-    <div class="cta-group">
-        <a href="https://apps.apple.com/us/app/crittercare-advice-app/id6759544497" class="btn btn-primary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            Download CritterCare
-        </a>
-        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-    </div>
-</section>
-
-<section class="section" id="apps">
-    <div class="section-label">Our Apps</div>
-    <h2>CritterCare Advice App</h2>
-    <p>Pet health guidance rooted in 20 years of veterinary experience — now in the palm of your hand.</p>
-
-    <div class="app-card">
-        <div class="app-icon">🐾</div>
-        <div class="app-info">
-            <h3>CritterCare Advice App</h3>
-            <div class="subtitle">Pet Health Symptom Guide</div>
-            <p>Helps pet owners assess common health concerns and determine the right next steps. Select your pet type and symptoms, answer guided questions, and receive structured care recommendations — including clear indicators for when veterinary attention is necessary.</p>
-            <div class="app-meta">
-                <div class="meta-item">Platform<strong>iOS</strong></div>
-                <div class="meta-item">Price<strong>Free</strong></div>
-                <div class="meta-item">Category<strong>Health & Fitness</strong></div>
+    <nav>
+        <a href="#" class="nav-logo"><span class="logo-mark">BA</span>BAY AREA APPS</a>
+        <button class="nav-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+        <ul class="nav-links">
+            <li><a href="#apps">Apps</a></li>
+            <li><a href="#studio">Studio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="hero">
+        <div class="hero-badge">App Development Studio</div>
+        <h1><span class="red">Bay Area</span> Apps</h1>
+        <p class="hero-sub">Mobile apps across every category. Built from scratch. Available on the App Store.</p>
+        <div class="hero-cta">
+            <a href="#apps" class="btn-primary">See Our Apps</a>
+            <a href="#contact" class="btn-ghost">Contact Us</a>
+        </div>
+    </section>
+    <div class="divider"></div>
+    <section id="apps">
+        <div class="section-label">Apps</div>
+        <h2 class="section-title">What We're Building</h2>
+        <p class="section-desc">Live on the App Store and in the pipeline. No limits on category.</p>
+        <div class="apps-grid">
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon"><img src="crittercare-icon.png" alt="CritterCare"></div>
+                    <div><h3>CritterCare</h3><span class="app-category">Pet Health</span></div>
+                </div>
+                <p>AI-powered pet health guidance with assessments, chat support, and wellness tracking.</p>
+                <span class="status live">Live on App Store</span><br>
+                <a href="https://apps.apple.com/app/crittercare-advice-app/id6740702428" class="store-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    App Store
+                </a>
+            </div>
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon placeholder">🍽️</div>
+                    <div><h3>Coming Soon</h3><span class="app-category">Food &amp; Dining</span></div>
+                </div>
+                <p>A new way to connect restaurants, menus, and diners. Details dropping soon.</p>
+                <span class="status dev">In Development</span>
+            </div>
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon placeholder">🎮</div>
+                    <div><h3>Coming Soon</h3><span class="app-category">Games</span></div>
+                </div>
+                <p>Original mobile games. More announcements coming.</p>
+                <span class="status dev">In Development</span>
+            </div>
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon placeholder">⚡</div>
+                    <div><h3>Coming Soon</h3><span class="app-category">Productivity</span></div>
+                </div>
+                <p>Tools to help people work smarter. Stay tuned.</p>
+                <span class="status dev">In Development</span>
             </div>
         </div>
-    </div>
-</section>
-
-<section class="section" id="about">
-    <div class="section-label">About</div>
-    <h2>Built From Experience</h2>
-    <p>Bay Area Apps LLC was founded with a simple mission — create apps that solve real problems, built by someone who has lived them.</p>
-
-    <div class="about-grid">
-        <div class="about-card">
-            <div class="icon">🏥</div>
-            <h3>20 Years in Veterinary</h3>
-            <p>Two decades of hands-on experience in the veterinary field inform every feature and recommendation in our apps.</p>
+    </section>
+    <div class="divider"></div>
+    <section id="studio">
+        <div class="section-label">The Studio</div>
+        <h2 class="section-title">How We Work</h2>
+        <p class="section-desc">Bay Area Apps LLC takes ideas from concept to the App Store — and keeps shipping.</p>
+        <div class="pillars">
+            <div class="pillar"><div class="pillar-icon">📱</div><h3>Native iOS</h3><p>SwiftUI and Apple's latest frameworks. Fast, polished, App Store-ready.</p></div>
+            <div class="pillar"><div class="pillar-icon">🤖</div><h3>AI Integration</h3><p>Smart features that solve real problems — not just buzzwords.</p></div>
+            <div class="pillar"><div class="pillar-icon">🚀</div><h3>All Categories</h3><p>Health, food, games, productivity, and whatever's next. No limits.</p></div>
+            <div class="pillar"><div class="pillar-icon">🔒</div><h3>Privacy First</h3><p>Your data stays yours. Transparency at the core of every app.</p></div>
         </div>
-        <div class="about-card">
-            <div class="icon">📱</div>
-            <h3>Indie Developer</h3>
-            <p>Founded in 2025, Bay Area Apps LLC represents a career built on passion — from the exam room to the App Store.</p>
+    </section>
+    <div class="divider"></div>
+    <section id="contact" class="contact-section">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-desc">Questions, collaborations, or feedback — reach out.</p>
+        <div class="contact-row">
+            <div class="contact-card"><h4>Email</h4><a href="mailto:info@bayareaapps.com">info@bayareaapps.com</a></div>
+            <div class="contact-card"><h4>Hours</h4><p>Mon – Fri, 9 AM – 5 PM PST</p></div>
         </div>
-        <div class="about-card">
-            <div class="icon">🚀</div>
-            <h3>More to Come</h3>
-            <p>CritterCare is just the beginning. New apps and games are on the way — all designed to elevate your experience.</p>
-        </div>
-    </div>
-</section>
-
-<section class="section" id="contact">
-    <div class="section-label">Contact</div>
-    <h2>Get in Touch</h2>
-    <p>Have a question, feedback, or a story to share? We'd love to hear from you.</p>
-
-    <div class="contact-grid">
-        <div class="contact-card">
-            <h3>Email</h3>
-            <p><a href="mailto:info@bayareaapps.com">info@bayareaapps.com</a></p>
-        </div>
-        <div class="contact-card">
-            <h3>Hours</h3>
-            <p>Monday – Friday, 9:00 AM – 5:00 PM</p>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <p>&copy; 2026 Bay Area Apps LLC. All Rights Reserved. &nbsp;|&nbsp; <a href="https://jmal9767.github.io/Privacy-/">Privacy Policy</a></p>
-</footer>
-```
-
+    </section>
+    <footer><p>&copy; 2026 Bay Area Apps LLC. All Rights Reserved. &nbsp;|&nbsp; <a href="https://jmal9767.github.io/Privacy-/">Privacy Policy</a></p></footer>
 </body>
 </html>
