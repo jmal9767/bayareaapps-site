@@ -1,106 +1,13 @@
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bay Area Apps LLC – App Development Studio</title>
-    <meta name="description" content="Bay Area Apps LLC builds mobile apps and services. Discover Paws & Whiskers Care Line for everyday dog and cat care education, and visit its companion website.">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16932498498"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-16932498498');</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root{--black:#0A0A0A;--black-light:#111;--black-card:#161616;--red:#D4262C;--red-dark:#A81E23;--red-glow:rgba(212,38,44,0.2);--gold:#C9A84C;--gold-light:#E0C56A;--gold-dim:rgba(201,168,76,0.12);--white:#F5F0E8;--white-dim:rgba(245,240,232,0.55);--white-faint:rgba(245,240,232,0.07)}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Barlow',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--white-faint)}.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:3px;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:0.6rem}.logo-mark{width:30px;height:30px;background:linear-gradient(135deg,var(--red),var(--red-dark));border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;letter-spacing:0;font-weight:700;box-shadow:0 2px 10px var(--red-glow)}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--white-dim);text-decoration:none;font-size:0.8rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.3s}.nav-links a:hover{color:var(--gold)}.nav-menu-btn{display:none;background:none;border:none;color:var(--white);font-size:1.4rem;cursor:pointer}.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,var(--red-glow) 0%,transparent 70%);pointer-events:none;animation:glow 8s ease-in-out infinite alternate}@keyframes glow{0%{opacity:0.5;transform:translateX(-50%) scale(1)}100%{opacity:0.8;transform:translateX(-50%) scale(1.1)}}.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.45rem 1.1rem;border:1px solid var(--gold-dim);border-radius:100px;font-size:0.7rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;animation:fadeUp 0.7s ease-out}.hero-badge::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,9vw,7.5rem);line-height:0.95;letter-spacing:3px;margin-bottom:1.5rem;animation:fadeUp 0.7s ease-out 0.1s both}.hero h1 .red{color:var(--red)}.hero h1 .gold{color:var(--gold)}.hero-sub{font-size:1.1rem;font-weight:300;color:var(--white-dim);max-width:500px;line-height:1.7;margin-bottom:2.5rem;animation:fadeUp 0.7s ease-out 0.2s both}.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fadeUp 0.7s ease-out 0.3s both}@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.btn-primary{padding:0.85rem 1.8rem;background:linear-gradient(135deg,var(--red),var(--red-dark));color:var(--white);text-decoration:none;font-weight:600;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase;border-radius:6px;border:none;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 18px var(--red-glow)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px var(--red-glow)}.btn-ghost{padding:0.85rem 1.8rem;background:transparent;color:var(--gold);text-decoration:none;font-weight:600;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase;border-radius:6px;border:1px solid var(--gold-dim);cursor:pointer;transition:all 0.3s}.btn-ghost:hover{background:var(--gold-dim);border-color:var(--gold);transform:translateY(-2px)}section{padding:5.5rem 2rem;max-width:1140px;margin:0 auto}.section-label{font-family:'Bebas Neue',sans-serif;font-size:0.8rem;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:0.6rem}.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);letter-spacing:2px;line-height:1;margin-bottom:0.75rem}.section-desc{font-weight:300;color:var(--white-dim);max-width:550px;line-height:1.7;font-size:1rem;margin-bottom:2.5rem}.divider{max-width:1140px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,var(--white-faint),var(--gold-dim),var(--white-faint),transparent)}.apps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}.app-card{background:var(--black-card);border:1px solid var(--white-faint);border-radius:14px;padding:1.75rem;transition:all 0.35s ease;position:relative;overflow:hidden}.app-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--red),var(--gold));opacity:0;transition:opacity 0.35s}.app-card:hover{border-color:rgba(201,168,76,0.15);transform:translateY(-3px);box-shadow:0 10px 36px rgba(0,0,0,0.5)}.app-card:hover::after{opacity:1}.app-header{display:flex;align-items:center;gap:0.9rem;margin-bottom:1rem}.app-icon{width:52px;height:52px;border-radius:13px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.4rem}.app-icon img{width:100%;height:100%;object-fit:cover}.app-icon.placeholder{background:linear-gradient(135deg,var(--black-light),#1c1c1c);border:1px solid var(--white-faint)}.app-category{font-size:0.7rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}.app-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:1.5px}.app-card p{color:var(--white-dim);font-weight:300;line-height:1.6;font-size:0.92rem;margin-bottom:1.25rem}.status{display:inline-flex;align-items:center;gap:0.35rem;font-size:0.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:0.35rem 0.8rem;border-radius:100px}.status.live{background:rgba(46,125,50,0.12);color:#66BB6A;border:1px solid rgba(46,125,50,0.25)}.status.live::before{content:'';width:5px;height:5px;background:#66BB6A;border-radius:50%;animation:pulse 2s ease-in-out infinite}.status.dev{background:var(--gold-dim);color:var(--gold);border:1px solid rgba(201,168,76,0.25)}.store-link{display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.6rem;padding:0.5rem 1rem;background:var(--white);color:var(--black);font-weight:600;font-size:0.75rem;letter-spacing:0.5px;text-decoration:none;border-radius:7px;transition:all 0.3s}.store-link:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(245,240,232,0.12)}.store-link svg{width:16px;height:16px;flex-shrink:0}.store-link{min-height:44px;font-size:0.85rem}.app-header>div:last-child{min-width:0}.app-card h3,.app-category{overflow-wrap:anywhere}.app-card p:last-of-type{font-size:0.85rem}a:focus-visible,button:focus-visible{outline:2px solid var(--gold-light);outline-offset:5px}section[id]{scroll-margin-top:80px}.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}.pillar{padding:1.75rem;border:1px solid var(--white-faint);border-radius:12px;background:var(--black-card);transition:border-color 0.3s}.pillar:hover{border-color:rgba(212,38,44,0.2)}.pillar-icon{font-size:1.4rem;margin-bottom:0.85rem}.pillar h3{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:1.5px;margin-bottom:0.4rem}.pillar p{font-weight:300;color:var(--white-dim);line-height:1.6;font-size:0.88rem}.contact-section{text-align:center}.contact-section .section-desc{margin-left:auto;margin-right:auto}.contact-row{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}.contact-card{padding:1.25rem 2rem;background:var(--black-card);border:1px solid var(--white-faint);border-radius:10px;transition:border-color 0.3s}.contact-card:hover{border-color:rgba(201,168,76,0.25)}.contact-card h4{font-family:'Bebas Neue',sans-serif;font-size:0.8rem;letter-spacing:2px;color:var(--gold);margin-bottom:0.3rem}.contact-card a{color:var(--white);text-decoration:none;font-weight:400;transition:color 0.3s}.contact-card a:hover{color:var(--gold-light)}.contact-card p{color:var(--white-dim);font-weight:300}footer{text-align:center;padding:2.5rem 2rem;border-top:1px solid var(--white-faint);color:var(--white-dim);font-size:0.78rem;font-weight:300}footer a{color:var(--gold);text-decoration:none}footer a:hover{text-decoration:underline}@media(max-width:768px){nav{padding:0.9rem 1.25rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);padding:1.25rem 1.5rem;gap:1rem;border-bottom:1px solid var(--white-faint)}.nav-links.open{display:flex}.nav-menu-btn{display:block}.hero{padding:6.5rem 1.5rem 3rem}section{padding:3.5rem 1.5rem}.apps-grid{grid-template-columns:1fr}.pillars{grid-template-columns:1fr}}
-    </style>
-</head>
-<body>
-    <nav>
-        <a href="#" class="nav-logo"><span class="logo-mark">BA</span>BAY AREA APPS</a>
-        <button class="nav-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
-        <ul class="nav-links">
-            <li><a href="#apps">Apps &amp; Services</a></li>
-            <li><a href="#studio">Studio</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <section class="hero">
-        <div class="hero-badge">App Development Studio</div>
-        <h1><span class="red">Bay Area</span> Apps</h1>
-        <p class="hero-sub">Mobile apps and helpful services, built from scratch. Meet Paws &amp; Whiskers Care Line for everyday dog and cat care education.</p>
-        <div class="hero-cta">
-            <a href="https://paws-whiskers-care-companion.jmal9767.chatgpt.site/" class="btn-primary">Visit Paws &amp; Whiskers</a>
-            <a href="#contact" class="btn-ghost">Contact Us</a>
-        </div>
-    </section>
-    <div class="divider"></div>
-    <section id="apps">
-        <div class="section-label">Apps &amp; Services</div>
-        <h2 class="section-title">What We're Building</h2>
-        <p class="section-desc">Explore Paws &amp; Whiskers Care Line and take a look at what we're building next.</p>
-        <div class="apps-grid">
-            <div class="app-card">
-                <div class="app-header">
-                    <div class="app-icon"><img src="paws-whiskers-icon.png" alt="" width="52" height="52"></div>
-                    <div><h3>Paws &amp; Whiskers</h3><span class="app-category">Care Line · Dogs &amp; Cats</span></div>
-                </div>
-                <p>Everyday dog and cat care education from a veterinary assistant. Explore care topics, email and text guidance, and phone support on the companion website.</p>
-                <p>General education for non-emergency questions. For urgent concerns, contact your veterinarian or an emergency clinic.</p>
-                <span class="status live">Visit the Companion Website</span><br>
-                <a href="https://paws-whiskers-care-companion.jmal9767.chatgpt.site/" class="store-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                    Visit Paws &amp; Whiskers Website
-                </a>
-            </div>
-            <div class="app-card">
-                <div class="app-header">
-                    <div class="app-icon placeholder">🍽️</div>
-                    <div><h3>Coming Soon</h3><span class="app-category">Food &amp; Dining</span></div>
-                </div>
-                <p>A new way to connect restaurants, menus, and diners. Details dropping soon.</p>
-                <span class="status dev">In Development</span>
-            </div>
-            <div class="app-card">
-                <div class="app-header">
-                    <div class="app-icon placeholder">🎮</div>
-                    <div><h3>Coming Soon</h3><span class="app-category">Games</span></div>
-                </div>
-                <p>Original mobile games. More announcements coming.</p>
-                <span class="status dev">In Development</span>
-            </div>
-            <div class="app-card">
-                <div class="app-header">
-                    <div class="app-icon placeholder">⚡</div>
-                    <div><h3>Coming Soon</h3><span class="app-category">Productivity</span></div>
-                </div>
-                <p>Tools to help people work smarter. Stay tuned.</p>
-                <span class="status dev">In Development</span>
-            </div>
-        </div>
-    </section>
-    <div class="divider"></div>
-    <section id="studio">
-        <div class="section-label">The Studio</div>
-        <h2 class="section-title">How We Work</h2>
-        <p class="section-desc">Bay Area Apps LLC takes ideas from concept to apps and services — and keeps shipping.</p>
-        <div class="pillars">
-            <div class="pillar"><div class="pillar-icon">📱</div><h3>Native iOS</h3><p>SwiftUI and Apple's latest frameworks. Fast, polished, App Store-ready.</p></div>
-            <div class="pillar"><div class="pillar-icon">🤖</div><h3>AI Integration</h3><p>Smart features that solve real problems — not just buzzwords.</p></div>
-            <div class="pillar"><div class="pillar-icon">🚀</div><h3>All Categories</h3><p>Health, food, games, productivity, and whatever's next. No limits.</p></div>
-            <div class="pillar"><div class="pillar-icon">🔒</div><h3>Privacy First</h3><p>Your data stays yours. Transparency at the core of every app.</p></div>
-        </div>
-    </section>
-    <div class="divider"></div>
-    <section id="contact" class="contact-section">
-        <div class="section-label">Contact</div>
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-desc">Questions, collaborations, or feedback — reach out.</p>
-        <div class="contact-row">
-            <div class="contact-card"><h4>Email</h4><a href="mailto:info@bayareaapps.com">info@bayareaapps.com</a></div>
-            <div class="contact-card"><h4>Hours</h4><p>Mon – Fri, 9 AM – 5 PM PST</p></div>
-        </div>
-    </section>
-    <footer><p>&copy; 2026 Bay Area Apps LLC. All Rights Reserved. &nbsp;|&nbsp; <a href="https://jmal9767.github.io/Privacy-/">Privacy Policy</a></p></footer>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bay Area Apps | Thoughtful Apps. Everyday Help.</title><meta name="description" content="Discover Bay Area Apps: Paws & Whiskers Care Line for everyday pet-care education and PetAssist Local, our upcoming at-home pet-care app."><link rel="canonical" href="https://bayareaapps.com/"><meta property="og:title" content="Bay Area Apps — Thoughtful Apps. Everyday Help."><meta property="og:description" content="Explore Paws & Whiskers Care Line and PetAssist Local."><meta property="og:type" content="website"><meta property="og:url" content="https://bayareaapps.com/"><meta name="theme-color" content="#0e1014"><link rel="stylesheet" href="/assets/studio.css"><script async src="https://www.googletagmanager.com/gtag/js?id=AW-16932498498"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-16932498498');</script></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="top"><div class="container"><nav class="nav" aria-label="Main navigation"><a class="logo" href="/" aria-label="Bay Area Apps home"><span class="mark" aria-hidden="true">BA</span><span>BAY AREA APPS<small>INDEPENDENT APP STUDIO</small></span></a><button class="menu" type="button" aria-expanded="false" aria-controls="main-links">Menu</button><div class="navlinks" id="main-links"><a href="#apps">Our apps</a><a href="/paws-whiskers/">Paws &amp; Whiskers</a><a href="/petassist-local/">PetAssist Local</a><a href="#contact">Contact</a></div></nav></div></header>
+<main id="main" class="container"><section class="hero"><div><p class="kicker">Built in the Bay Area. Made for everyday life.</p><h1>Thoughtful apps.<br><span>Everyday help.</span></h1><p class="intro">Practical ideas, personal care, and technology that feels easy to use. Discover the people-focused projects from Bay Area Apps.</p><div class="actions"><a class="button" href="#apps">Explore our apps</a><a class="button outline" href="#contact">Get in touch</a></div></div><aside class="hero-note"><p class="kicker">In the spotlight</p><h2>A little guidance for the pets you love.</h2><p>Paws &amp; Whiskers brings everyday dog-and-cat care education to your email, text messages, or phone.</p><a href="/paws-whiskers/">Meet Paws &amp; Whiskers</a></aside></section>
+<div class="band" aria-label="Studio focus"><span>Independent development</span><span>Clear, practical experiences</span><span>Built around real needs</span></div>
+<section class="section" id="apps"><div class="heading"><div><p class="kicker">Our apps &amp; services</p><h2>Find your kind of help.</h2></div><p>Each project has its own purpose and website. Choose one below to see what it offers.</p></div><div class="projects">
+<article class="project"><div class="project-top"><img src="/paws-whiskers-icon.png" alt="" width="66" height="66"><span class="badge">Care-line website</span></div><div class="project-body"><p class="category">Everyday dog &amp; cat care education</p><h3>Paws &amp; Whiskers<br>Care Line</h3><p>Have an everyday care question? Connect with a veterinary assistant for general education in the format that works for you.</p><ul><li>Email, text, and phone options</li><li>Small fees, with Community Access at $0</li><li>No app download needed to send a question</li></ul><p class="note">For non-emergency education. Medical concerns belong with a licensed veterinarian.</p><a class="button" href="/paws-whiskers/">Visit Paws &amp; Whiskers</a></div></article>
+<article class="project green"><div class="project-top"><span class="project-number" aria-hidden="true">PL</span><span class="badge">In development</span></div><div class="project-body"><p class="category">At-home pet-care connections</p><h3>PetAssist Local</h3><p>Meet our upcoming iPhone and iPad app for finding nearby pet-care providers and organizing help at home.</p><ul><li>Nearby provider discovery and profiles</li><li>Visit requests and booking history</li><li>Pet profiles and conversations</li></ul><p class="note">Coming soon. Live bookings and payments are not available yet.</p><a class="button" href="/petassist-local/">Explore PetAssist Local</a></div></article>
+</div></section>
+<section class="about" id="studio"><div><p class="kicker">The studio</p><h2>Real needs.<br>Thoughtful details.</h2><p>Bay Area Apps LLC is an independent app studio in the Bay Area. We turn practical ideas into mobile apps and companion websites, with a focus on making everyday tasks easier.</p></div><div><div class="principle"><h3>Easy to understand</h3><p>Clear words and straightforward choices help you find what you need.</p></div><div class="principle"><h3>Useful by design</h3><p>Each app starts with a real task, from asking a care question to organizing a pet-care visit.</p></div><div class="principle"><h3>Clear about availability</h3><p>See what you can use today and which projects are still being developed.</p></div></div></section>
+<section class="contact" id="contact"><p class="kicker">Let’s talk</p><h2>Questions? Ideas? Feedback?</h2><p>We’d like to hear from you. Email Bay Area Apps about our projects, collaboration, or help finding the right website.</p><a class="button light" href="mailto:info@bayareaapps.com">Email Bay Area Apps</a><p>info@bayareaapps.com</p></section></main>
+<footer><div class="container foot"><span>© 2026 Bay Area Apps LLC</span><nav aria-label="Footer navigation"><a href="/paws-whiskers/">Paws &amp; Whiskers</a><a href="/petassist-local/">PetAssist Local</a><a href="https://jmal9767.github.io/Privacy-/">Privacy policy</a></nav></div></footer>
+<script>const menu=document.querySelector('.menu'),links=document.querySelector('.navlinks');menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});links.addEventListener('click',e=>{if(e.target.closest('a')){links.classList.remove('open');menu.setAttribute('aria-expanded','false');}});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&links.classList.contains('open')){links.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.focus();}});</script></body></html>
