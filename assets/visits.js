@@ -84,6 +84,7 @@ function render(visit) {
   document.getElementById('visit-distance').textContent = visit.distanceMiles != null ? 'Approximately ' + visit.distanceMiles.toFixed(1) + ' miles from our service area (straight-line).' : 'Distance is available once both our service area and your visit location are known.';
   const addressMap = document.getElementById('visit-map'); addressMap.href = mapURL(visit.location ? visit.location.latitude + ',' + visit.location.longitude : visit.address); addressMap.textContent = visit.location ? 'View visit location in Maps' : 'View visit address in Maps'; addressMap.hidden = !visit.address;
   setAreaMap(document.getElementById('visit-area-map'), visit.serviceArea);
+  renderAreaMap(document.getElementById('private-area-map'), visit.serviceArea);
   document.getElementById('portal-location-remove').hidden = !visit.location;
 
   const summary = document.getElementById('visit-summary'); summary.replaceChildren();
@@ -150,6 +151,7 @@ async function loadServiceArea() {
     serviceArea = await api('/petassist/service-area');
     text.textContent = serviceArea ? 'Our public service area: ' + serviceArea.label : 'Contact info@bayareaapps.com to check availability in your area. We confirm every visit before payment.';
     setAreaMap(document.getElementById('public-service-map'),serviceArea);
+    renderAreaMap(document.getElementById('public-area-map'),serviceArea);
   } catch { text.textContent = 'Our service area could not load. Contact info@bayareaapps.com to check your address.'; }
 }
 function oneVisitLocation() {
@@ -204,3 +206,15 @@ document.querySelectorAll('.service-choice').forEach(link => link.addEventListen
   requestForm.elements.service.value = link.dataset.service;
   requestForm.elements.address.focus({preventScroll:true});
 }));
+
+function renderAreaMap(frame,area) {
+  frame.hidden = !area;
+  if (!area) { frame.removeAttribute('src'); return; }
+  // Only the public area goes to the map provider; never the client's pin or private link.
+  const latitude = Math.max(-85,Math.min(85,area.latitude)), longitude = area.longitude;
+  const span = 0.1 / Math.max(0.2,Math.cos(latitude * Math.PI / 180));
+  const url = new URL('https://www.openstreetmap.org/export/embed.html');
+  url.searchParams.set('bbox',[Math.max(-180,longitude-span),Math.max(-85,latitude-0.075),Math.min(180,longitude+span),Math.min(85,latitude+0.075)].join(','));
+  url.searchParams.set('layer','mapnik');
+  if (frame.getAttribute('src') !== url.href) frame.src = url.href;
+}
