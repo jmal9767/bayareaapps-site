@@ -12,3 +12,6 @@ The Visits page uses fragment-based private access links and contains no adverti
 Payment processing uses the existing Cloudflare worker and business PayPal account. Apple Pay availability depends on the client browser and PayPal eligibility. No funds are directed to an Apple account email; payments are processed by the connected business PayPal merchant.
 
 Preserve CNAME, app-ads.txt, ads.txt, privacy links and the existing care-line intake URL. Backend code is in Vet-Assistant-Help-Line/main; private Visits app code is in PetAssist-Local-App/PetAssist-Local (main is a separate app). No operator connection key belongs in website source or Git.
+
+## October 4: text-only preference
+The user requested removing all website images. Removed first-party raster artwork, inline SVG artwork, icons, and illustration videos from all three public pages, and removed their asset files. Pet branding uses names, copy, typography and the shared charcoal/red/gold palette. Request forms, private messages, checkout, service prices and navigation remain functional.
