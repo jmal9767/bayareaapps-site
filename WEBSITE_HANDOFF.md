@@ -23,3 +23,7 @@ Added the user-supplied async AdSense loader for ca-pub-4065093972696595 once in
 Simplified all three public pages with a bright shared theme, rounded controls, shorter copy, and readable dark text. The user explicitly withdrew the picture request; no images are included or referenced. /assets/friendly.css is now shared by all three pages. App names, care-line prices, Community Access, existing intake links, and PetAssist development status remain accurate. Paws service is still for adults; the friendly visual style does not add services for children. AdSense loader remains once in each page head, and website privacy links remain in each footer.
 
 The user clarified that friendly means playful and approachable for adults, rather than a children’s website. Adult-oriented wording retained alongside the lighter theme. No pictures.
+
+## Distinct app themes and studio restoration — October 3, 2026
+
+Restored BayAreaApps homepage exactly to the black/red/gold version at c0cd26b (including installed AdSense and privacy link). Paws now uses cream, forest green, terracotta, serif headlines and a curved pricing panel; PetAssist uses navy, lime, bold sans-serif headlines and a local-services layout. Both pages use separate CSS files, remain picture-free as requested, preserve pricing/status and cross-links, and retain AdSense and privacy links.
