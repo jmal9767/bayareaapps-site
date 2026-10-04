@@ -17,3 +17,9 @@ Future maintainers / Grok: update descriptions and launch status only when confi
 ## AdSense — October 3, 2026
 
 Added the user-supplied async AdSense loader for ca-pub-4065093972696595 once in the head of the homepage and each app companion page. Added root ads.txt; existing app-ads.txt already lists the same publisher and is preserved. Website privacy is at /privacy/ and linked from all three footers. The external care-line intake, payment forms, and apps were not modified. No ad unit IDs were supplied, so no manual ad units were invented. Auto ads placements, account/site approval, geographic consent messages, and ad formats must be configured in the publisher’s AdSense dashboard. Recommend disabling overlay/vignette/anchor formats to maintain the accessible layout. Verify Google consent-message requirements for the actual visitors before serving ads in affected regions. The code installation itself does not confirm approval, ad delivery, or earnings.
+
+## Friendly redesign — October 3, 2026
+
+Simplified all three public pages with a bright shared theme, rounded controls, shorter copy, and readable dark text. The user explicitly withdrew the picture request; no images are included or referenced. /assets/friendly.css is now shared by all three pages. App names, care-line prices, Community Access, existing intake links, and PetAssist development status remain accurate. Paws service is still for adults; the friendly visual style does not add services for children. AdSense loader remains once in each page head, and website privacy links remain in each footer.
+
+The user clarified that friendly means playful and approachable for adults, rather than a children’s website. Adult-oriented wording retained alongside the lighter theme. No pictures.
