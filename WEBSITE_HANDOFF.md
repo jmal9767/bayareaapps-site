@@ -27,3 +27,7 @@ The user clarified that friendly means playful and approachable for adults, rath
 ## Distinct app themes and studio restoration — October 3, 2026
 
 Restored BayAreaApps homepage exactly to the black/red/gold version at c0cd26b (including installed AdSense and privacy link). Paws now uses cream, forest green, terracotta, serif headlines and a curved pricing panel; PetAssist uses navy, lime, bold sans-serif headlines and a local-services layout. Both pages use separate CSS files, remain picture-free as requested, preserve pricing/status and cross-links, and retain AdSense and privacy links.
+
+## Visual additions — October 3, 2026
+
+The user requested all proposed visual categories, superseding the earlier no-picture preference. Only the two app microsites changed. Added pet/service icons, two original generated illustrations (care-pets.webp and local-apps.webp), gently animated badges with pause controls/reduced-motion support, interactive phone-style previews, semantic step diagrams, decorative patterns, and two six-second silent MP4 illustration loops (manual play, controls, preload none). The clips animate camera framing; characters are illustrations, not real footage. PetAssist is explicitly labeled concept preview, not an actual app screenshot. No fake provider availability or live booking action is shown. Main index.html remains identical to edcf778. Scripts preserve external intake and AdSense. Original images generated using the built-in tool and optimized for delivery; clips rendered locally with FFmpeg.
