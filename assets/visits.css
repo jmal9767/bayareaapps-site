@@ -3,3 +3,5 @@
 @media(max-width:380px){.visit-prices{grid-template-columns:1fr}.visit-price{min-width:0}}
 
 .visits-hero-text{grid-template-columns:1fr;max-width:850px}.visits-hero-text h1{font-size:clamp(46px,6vw,82px)}
+
+.service-area-card,.visit-location{border:1px solid var(--stroke);border-radius:14px;padding:22px;margin:24px 0;overflow-wrap:anywhere}.service-area-card h2{font-family:Georgia,serif;color:var(--gold)}.location-confirm{display:flex!important;align-items:flex-start;gap:12px;font-weight:400!important}.location-confirm input{width:22px;min-height:22px;flex-shrink:0}.visit-location .portal-actions{margin:16px 0}.visit-location p{overflow-wrap:anywhere}@media(max-width:380px){.visit-location{padding:16px}.visit-location .button{width:100%}}

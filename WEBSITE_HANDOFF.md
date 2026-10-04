@@ -15,3 +15,6 @@ Preserve CNAME, app-ads.txt, ads.txt, privacy links and the existing care-line i
 
 ## October 4: text-only preference
 The user requested removing all website images. Removed first-party raster artwork, inline SVG artwork, icons, and illustration videos from all three public pages, and removed their asset files. Pet branding uses names, copy, typography and the shared charcoal/red/gold palette. Request forms, private messages, checkout, service prices and navigation remain functional.
+
+### Local distance and location
+The Visits website reads its public service area from `/petassist/service-area`. The owner publishes its city/ZIP or public address through the native Business tab; no personal GPS location is automatically shared. Clients may optionally share a one-time browser location while at the visit address, with explicit confirmation; their private page permits removing it. The native app can resolve a written visit address using Apple. Private pages show that client's address/pin and the same server-calculated straight-line distance as the business app; public payment receipts never show those details. Distances are not driving estimates or live tracking. Apple Maps links open on user action; no image or map embed was added. The app embeds this website in a read-only client preview, disabling forms and checkout when its WebKit preview flag is set.
