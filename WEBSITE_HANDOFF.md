@@ -7,7 +7,7 @@ Two public companion sites are hosted by the existing BayAreaApps GitHub Pages d
 Both sites link to each other and the BayAreaApps homepage. The homepage links to both. The older private ChatGPT companion site is preserved, but is no longer the public homepage destination.
 
 Content sources:
-- jmal9767/Vet-Assistant-Help-Line main: README.md, index.html, terms.html, privacy.html. Existing Cloudflare intake is linked, not copied or changed. Prices: $5 quick, $10 detailed, $20 phone, $0 Community Access.
+- jmal9767/Vet-Assistant-Help-Line main: README.md, index.html, terms.html, privacy.html. Existing Cloudflare intake is linked, not copied or changed. Prices: $5 quick, $10 detailed, $20 phone, $0 Free Community Support.
 - jmal9767/PetAssist-Local-App branch PetAssist-Local: XCODE_IOS_SETUP.md, WelcomeView.swift, MarketplaceModels.swift, and project tree. Do not use main for this app: it contains the separate CritterCare project.
 
 PetAssist is explicitly in development; no provider verification, live booking, payment, availability, or App Store release is claimed. No new form stores data. Email links open the visitor’s mail app.
@@ -20,7 +20,7 @@ Added the user-supplied async AdSense loader for ca-pub-4065093972696595 once in
 
 ## Friendly redesign — October 3, 2026
 
-Simplified all three public pages with a bright shared theme, rounded controls, shorter copy, and readable dark text. The user explicitly withdrew the picture request; no images are included or referenced. /assets/friendly.css is now shared by all three pages. App names, care-line prices, Community Access, existing intake links, and PetAssist development status remain accurate. Paws service is still for adults; the friendly visual style does not add services for children. AdSense loader remains once in each page head, and website privacy links remain in each footer.
+Simplified all three public pages with a bright shared theme, rounded controls, shorter copy, and readable dark text. The user explicitly withdrew the picture request; no images are included or referenced. /assets/friendly.css is now shared by all three pages. App names, care-line prices, Free Community Support, existing intake links, and PetAssist development status remain accurate. Paws service is still for adults; the friendly visual style does not add services for children. AdSense loader remains once in each page head, and website privacy links remain in each footer.
 
 The user clarified that friendly means playful and approachable for adults, rather than a children’s website. Adult-oriented wording retained alongside the lighter theme. No pictures.
 
