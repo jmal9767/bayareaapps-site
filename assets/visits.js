@@ -56,7 +56,28 @@ function safeCheckout(value, token) {
     return url.origin === visitsAPI && url.pathname === '/petassist/pay' && url.search === '?token=' + token && !url.hash && !url.username && !url.password ? url.href : null;
   } catch { return null; }
 }
+const visitStages = [
+  {status:'requested',title:'Request received',heading:'Waiting for confirmation',note:'We are reviewing your address, service and preferred time. Your request is not yet a confirmed appointment.'},
+  {status:'accepted',title:'Confirmed',heading:'Your visit is confirmed',note:'Your appointment time is shown below. We will update this page when we are on the way.'},
+  {status:'en-route',title:'On the way',heading:'We’re on the way to your pet',note:'Our business has marked this visit as on the way. Send a message if there are access instructions. This is a progress update, not a live location or arrival estimate.'},
+  {status:'in-progress',title:'Caring for your pet',heading:'Your pet’s visit is underway',note:'Our business has started your visit. Your appointment details and messages stay available here.'},
+  {status:'completed',title:'Completed',heading:'Your pet’s visit is complete',note:'Thank you for choosing Paws & Whiskers Visits. You can review payment status and message our business below.'}
+];
+function renderProgress(visit) {
+  const index = visitStages.findIndex(stage => stage.status === visit.visitStatus), cancelled = visit.visitStatus === 'cancelled';
+  document.getElementById('journey-title').textContent = cancelled ? 'Your visit was cancelled' : visitStages[index]?.heading || 'Your visit';
+  document.getElementById('journey-note').textContent = cancelled ? 'This visit will not go ahead. Message us about another time or any payment and refund questions.' : visitStages[index]?.note || 'Refresh this page for the latest appointment information.';
+  const progress = document.getElementById('visit-progress'); progress.replaceChildren(); progress.hidden = cancelled;
+  visitStages.forEach((stage,number) => {
+    const item = document.createElement('li'), marker = document.createElement('span'), label = document.createElement('span');
+    item.className = number < index ? 'done' : number === index ? 'current' : '';
+    if (number === index) item.setAttribute('aria-current','step');
+    marker.className = 'progress-number'; marker.textContent = String(number + 1);
+    label.textContent = stage.title; item.append(marker,label); progress.append(item);
+  });
+}
 function render(visit) {
+  renderProgress(visit);
   currentVersion = visit.version;
   document.getElementById('visit-address').textContent = 'Your visit address: ' + visit.address;
   document.getElementById('visit-area').textContent = visit.serviceArea ? 'Our public service area: ' + visit.serviceArea.label : 'Ask us about availability for your address. Our service area has not been published yet.';
@@ -66,7 +87,7 @@ function render(visit) {
   document.getElementById('portal-location-remove').hidden = !visit.location;
 
   const summary = document.getElementById('visit-summary'); summary.replaceChildren();
-  for (const value of [visit.petName + ' · ' + visit.service, visit.visitStatus.replaceAll('-', ' '), (visit.scheduledAt ? 'Confirmed: ' : 'Preferred: ') + new Date(visit.scheduledAt || visit.preferredAt).toLocaleString(), visit.amount + ' · ' + visit.status]) {
+  for (const value of [visit.petName + ' · ' + visit.service, visit.visitStatus === 'cancelled' ? 'Cancelled' : visitStages.find(stage => stage.status === visit.visitStatus)?.title || 'Visit update', (visit.scheduledAt ? 'Confirmed: ' : 'Preferred: ') + new Date(visit.scheduledAt || visit.preferredAt).toLocaleString(), visit.amount + ' · ' + visit.status]) {
     const item = document.createElement('span'); item.textContent = value; summary.append(item);
   }
   const pay = document.getElementById('visit-pay'), link = safeCheckout(visit.checkoutURL, currentVisit);
@@ -177,3 +198,9 @@ if (businessPreview) {
   document.getElementById('visit-pay').addEventListener('click',event => event.preventDefault());
 }
 loadServiceArea();
+
+document.querySelectorAll('.service-choice').forEach(link => link.addEventListener('click',() => {
+  if (businessPreview) return;
+  requestForm.elements.service.value = link.dataset.service;
+  requestForm.elements.address.focus({preventScroll:true});
+}));
