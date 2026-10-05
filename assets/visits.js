@@ -64,6 +64,7 @@ const visitStages = [
   {status:'completed',title:'Completed',heading:'Your pet’s visit is complete',note:'Thank you for choosing Paws & Whiskers Visits. You can review payment status and message our business below.'}
 ];
 function renderProgress(visit) {
+  if (!document.getElementById('journey-title') || !document.getElementById('visit-progress')) return;
   const index = visitStages.findIndex(stage => stage.status === visit.visitStatus), cancelled = visit.visitStatus === 'cancelled';
   document.getElementById('journey-title').textContent = cancelled ? 'Your visit was cancelled' : visitStages[index]?.heading || 'Your visit';
   document.getElementById('journey-note').textContent = cancelled ? 'This visit will not go ahead. Message us about another time or any payment and refund questions.' : visitStages[index]?.note || 'Refresh this page for the latest appointment information.';
@@ -79,6 +80,7 @@ function renderProgress(visit) {
 function render(visit) {
   renderProgress(visit);
   currentVersion = visit.version;
+  if (document.getElementById('visit-address')) {
   document.getElementById('visit-address').textContent = 'Your visit address: ' + visit.address;
   document.getElementById('visit-area').textContent = visit.serviceArea ? 'Our public service area: ' + visit.serviceArea.label : 'Ask us about availability for your address. Our service area has not been published yet.';
   document.getElementById('visit-distance').textContent = visit.distanceMiles != null ? 'Approximately ' + visit.distanceMiles.toFixed(1) + ' miles from our service area (straight-line).' : 'Distance is available once both our service area and your visit location are known.';
@@ -86,6 +88,7 @@ function render(visit) {
   setAreaMap(document.getElementById('visit-area-map'), visit.serviceArea);
   renderAreaMap(document.getElementById('private-area-map'), visit.serviceArea);
   document.getElementById('portal-location-remove').hidden = !visit.location;
+  }
 
   const summary = document.getElementById('visit-summary'); summary.replaceChildren();
   for (const value of [visit.petName + ' · ' + visit.service, visit.visitStatus === 'cancelled' ? 'Cancelled' : visitStages.find(stage => stage.status === visit.visitStatus)?.title || 'Visit update', (visit.scheduledAt ? 'Confirmed: ' : 'Preferred: ') + new Date(visit.scheduledAt || visit.preferredAt).toLocaleString(), visit.amount + ' · ' + visit.status]) {
@@ -147,6 +150,7 @@ function approximateMiles(a,b) {
 }
 async function loadServiceArea() {
   const text = document.getElementById('public-service-area');
+  if (!text) return;
   try {
     serviceArea = await api('/petassist/service-area');
     text.textContent = serviceArea ? 'Our public service area: ' + serviceArea.label : 'Contact info@bayareaapps.com to check availability in your area. We confirm every visit before payment.';
@@ -165,6 +169,7 @@ function oneVisitLocation() {
 }
 for (const kind of ['request','portal']) {
   const button = document.getElementById(kind + '-location-share'), remove = document.getElementById(kind + '-location-remove'), message = document.getElementById(kind === 'request' ? 'request-location-status' : 'location-status'), consent = document.getElementById(kind + '-location-confirm');
+  if (!button || !remove || !message || !consent) continue;
   consent.addEventListener('change',() => { if (kind === 'request' && !consent.checked) { requestLocation = null; remove.hidden = true; status(message,'Location will not be included with your request.'); } });
   button.addEventListener('click',async () => {
     if (businessPreview || button.disabled) return;
@@ -208,6 +213,7 @@ document.querySelectorAll('.service-choice').forEach(link => link.addEventListen
 }));
 
 function renderAreaMap(frame,area) {
+  if (!frame) return;
   frame.hidden = !area;
   if (!area) { frame.removeAttribute('src'); return; }
   // Only the public area goes to the map provider; never the client's pin or private link.
