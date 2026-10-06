@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src https://vet-helpline-development.dkjmmz6whh.workers.dev; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-src https://www.openstreetmap.org">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src https://vet-helpline-development.dkjmmz6whh.workers.dev; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-src 'none'">
 <title>Paws & Whiskers Visits | Bay Area Apps</title>
 <meta name="description" content="Request an at-home pet-care visit. Follow your appointment on a private page, then pay with PayPal or Apple Pay after we confirm.">
 <link rel="canonical" href="https://bayareaapps.com/petassist-local/">
@@ -14,16 +14,11 @@
 <meta property="og:url" content="https://bayareaapps.com/petassist-local/">
 <link rel="stylesheet" href="/assets/local-theme.css">
 <link rel="stylesheet" href="/assets/brand-colors.css">
-<link rel="stylesheet" href="/assets/visits.css?v=20261005.1">
+<link rel="stylesheet" href="/assets/visits.css?v=20261005.2">
 </head>
 <body class="ride-app">
 <a class="skip" href="#main">Skip to content</a>
-<div class="map-stage">
-<iframe class="stage-map" id="public-area-map" title="Our approximate service area map" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups" hidden></iframe>
-<iframe class="stage-map" id="private-area-map" title="Our approximate service area map" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups" hidden></iframe>
-<div class="map-shade" aria-hidden="true"></div>
-<p class="map-caption" id="map-caption">The map shows our general service area, not a live car or your home address.</p>
-</div>
+<div class="map-stage" aria-hidden="true"></div>
 <header class="ride-top">
 <nav class="nav" aria-label="Main navigation">
 <a class="brand" href="/petassist-local/">Paws & Whiskers Visits<small>BAY AREA APPS</small></a>
@@ -41,7 +36,7 @@
 <div class="sheet-handle" aria-hidden="true"></div>
 <p class="where-kicker">At-home pet care</p>
 <h1 id="request-title">Where should we visit?</h1>
-<p class="lede" id="public-service-area" role="status">Loading our service area…</p>
+<p class="lede">Tell us where your pet needs care. We confirm the visit before you pay. This screen does not show our location or how far away we are.</p>
 <form class="ride-form" id="request-form">
 <div class="step" data-step="where">
 <label class="where-field">Visit address
@@ -51,11 +46,11 @@
 <div class="visit-location">
 <label class="location-confirm"><input type="checkbox" id="request-location-confirm"> I am at this address and want to include my location (optional).</label>
 <div class="row-actions">
-<button class="button secondary" type="button" id="request-location-share">Check distance</button>
+<button class="button secondary" type="button" id="request-location-share">Include my location</button>
 <button class="button secondary" type="button" id="request-location-remove" hidden>Remove location</button>
 </div>
 <p class="form-status" id="request-location-status" role="status"></p>
-<p class="visit-note">One location only. Not live tracking. You can request with the address alone. <a id="public-service-map" href="https://maps.apple.com/" target="_blank" rel="noopener noreferrer" hidden>View service area in Maps</a></p>
+<p class="visit-note">Optional, and only if you are at the visit address. We use it to find you. It is not live tracking, and it does not show you where we are.</p>
 </div>
 <button class="button" type="button" id="to-service" data-nav>Choose a service</button>
 </div>
@@ -122,11 +117,8 @@
 <section class="visit-location" aria-labelledby="visit-location-title">
 <h2 id="visit-location-title">Pickup</h2>
 <p id="visit-address"></p>
-<p id="visit-area"></p>
-<p id="visit-distance"></p>
 <div class="portal-actions">
-<a class="button secondary" id="visit-map" target="_blank" rel="noopener noreferrer" hidden>Open in Maps</a>
-<a class="button secondary" id="visit-area-map" target="_blank" rel="noopener noreferrer" hidden>Service area</a>
+<a class="button secondary" id="visit-map" target="_blank" rel="noopener noreferrer" hidden>Open your address in Maps</a>
 </div>
 <label class="location-confirm"><input type="checkbox" id="portal-location-confirm"> I am at the visit address and want to share this location.</label>
 <div class="portal-actions">
@@ -134,7 +126,7 @@
 <button class="button secondary" type="button" id="portal-location-remove" hidden>Remove shared location</button>
 </div>
 <p class="form-status" id="location-status" role="status"></p>
-<p class="visit-note">Straight-line distance from our public area. Not a driving time or live tracking.</p>
+<p class="visit-note">Your address stays on this private page. We do not show our home, a live location, or how far away we are.</p>
 </section>
 <h2>Messages</h2>
 <ul class="visit-messages" id="visit-messages" aria-label="Visit messages"></ul>
@@ -150,6 +142,6 @@
 <p class="visit-note">Keep this link private. Anyone with it can view the visit and send messages. Email <a href="mailto:info@bayareaapps.com">info@bayareaapps.com</a> for help.</p>
 </section>
 </main>
-<script src="/assets/visits.js?v=20261005.1" defer></script>
+<script src="/assets/visits.js?v=20261005.2" defer></script>
 </body>
 </html>

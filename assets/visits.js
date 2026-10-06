@@ -1,6 +1,6 @@
 'use strict';
 const businessPreview = window.pawsBusinessPreview === true;
-let serviceArea = null, requestLocation = null, currentVersion = null;
+let requestLocation = null, currentVersion = null;
 const visitsAPI = 'https://vet-helpline-development.dkjmmz6whh.workers.dev';
 const menu = document.querySelector('.menu'), links = document.querySelector('#main-links');
 menu.addEventListener('click', () => menu.setAttribute('aria-expanded', String(links.classList.toggle('open'))));
@@ -88,11 +88,9 @@ function render(visit) {
   currentVersion = visit.version;
   if (document.getElementById('visit-address')) {
   document.getElementById('visit-address').textContent = 'Your visit address: ' + visit.address;
-  document.getElementById('visit-area').textContent = visit.serviceArea ? 'Our public service area: ' + visit.serviceArea.label : 'Ask us about availability for your address. Our service area has not been published yet.';
-  document.getElementById('visit-distance').textContent = visit.distanceMiles != null ? 'Approximately ' + visit.distanceMiles.toFixed(1) + ' miles from our service area (straight-line).' : 'Distance is available once both our service area and your visit location are known.';
-  const addressMap = document.getElementById('visit-map'); addressMap.href = mapURL(visit.location ? visit.location.latitude + ',' + visit.location.longitude : visit.address); addressMap.textContent = visit.location ? 'View visit location in Maps' : 'View visit address in Maps'; addressMap.hidden = !visit.address;
-  setAreaMap(document.getElementById('visit-area-map'), visit.serviceArea);
-  renderAreaMap(document.getElementById('private-area-map'), visit.serviceArea);
+  const addressMap = document.getElementById('visit-map');
+  addressMap.href = mapURL(visit.address);
+  addressMap.hidden = !visit.address;
   document.getElementById('portal-location-remove').hidden = !visit.location;
   }
 
@@ -152,23 +150,7 @@ document.addEventListener('visibilitychange', () => { if (!document.hidden) refr
 setInterval(() => refresh(), 30000);
 openPrivatePage();
 
-function mapURL(query) { const url = new URL('https://maps.apple.com/'); url.searchParams.set('q',query); return url.href; }
-function setAreaMap(link, area) { link.hidden = !area; if (area) link.href = mapURL(area.latitude + ',' + area.longitude); }
-function approximateMiles(a,b) {
-  const rad = value => value * Math.PI / 180;
-  const h = Math.sin(rad(b.latitude-a.latitude)/2)**2 + Math.cos(rad(a.latitude))*Math.cos(rad(b.latitude))*Math.sin(rad(b.longitude-a.longitude)/2)**2;
-  return 3958.7613 * 2 * Math.asin(Math.sqrt(Math.min(1,Math.max(0,h))));
-}
-async function loadServiceArea() {
-  const text = document.getElementById('public-service-area');
-  if (!text) return;
-  try {
-    serviceArea = await api('/petassist/service-area');
-    text.textContent = serviceArea ? 'Our public service area: ' + serviceArea.label : 'Contact info@bayareaapps.com to check availability in your area. We confirm every visit before payment.';
-    setAreaMap(document.getElementById('public-service-map'),serviceArea);
-    renderAreaMap(document.getElementById('public-area-map'),serviceArea);
-  } catch { text.textContent = 'Our service area could not load. Contact info@bayareaapps.com to check your address.'; }
-}
+function mapURL(query) { const url = new URL('https://maps.apple.com/'); url.searchParams.set('q', query); return url.href; }
 function oneVisitLocation() {
   return new Promise((resolve,reject) => {
     if (!navigator.geolocation) { reject(new Error('Location is unavailable in this browser. You can still use your visit address.')); return; }
@@ -191,7 +173,7 @@ for (const kind of ['request','portal']) {
       if (!consent.checked) { status(message,'Location was not shared.'); return; }
       if (kind === 'request') {
         requestLocation = location; remove.hidden = false;
-        status(message,(serviceArea ? 'Approximately ' + approximateMiles(serviceArea,location).toFixed(1) + ' miles from our service area (straight-line). ' : '') + 'This location will be included when you send your request.');
+        status(message, 'Your location will be included when you send the request. This does not show where we are.');
       } else {
         render(await api('/petassist/client/visits/' + currentVisit + '/location','PATCH',{location,locationConfirmed:true,expectedVersion:currentVersion},currentAccess));
         status(message,'Visit location shared with our business. No live tracking is enabled.');
@@ -215,8 +197,6 @@ if (businessPreview) {
   document.querySelectorAll('form').forEach(form => form.addEventListener('submit',event => event.preventDefault()));
   document.getElementById('visit-pay').addEventListener('click',event => event.preventDefault());
 }
-loadServiceArea();
-
 document.querySelectorAll('.service-choice').forEach(link => link.addEventListener('click', () => {
   if (businessPreview) return;
   requestForm.elements.service.value = link.dataset.service;
@@ -245,16 +225,3 @@ document.getElementById('to-details').addEventListener('click', () => { syncFare
 document.querySelectorAll('[data-back]').forEach(button => button.addEventListener('click', () => showStep(button.dataset.back)));
 requestForm.elements.service.forEach(input => input.addEventListener('change', syncFare));
 syncFare();
-
-function renderAreaMap(frame,area) {
-  if (!frame) return;
-  frame.hidden = !area;
-  if (!area) { frame.removeAttribute('src'); return; }
-  // Only the public area goes to the map provider; never the client's pin or private link.
-  const latitude = Math.max(-85,Math.min(85,area.latitude)), longitude = area.longitude;
-  const span = 0.1 / Math.max(0.2,Math.cos(latitude * Math.PI / 180));
-  const url = new URL('https://www.openstreetmap.org/export/embed.html');
-  url.searchParams.set('bbox',[Math.max(-180,longitude-span),Math.max(-85,latitude-0.075),Math.min(180,longitude+span),Math.min(85,latitude+0.075)].join(','));
-  url.searchParams.set('layer','mapnik');
-  if (frame.getAttribute('src') !== url.href) frame.src = url.href;
-}

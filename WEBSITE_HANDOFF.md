@@ -27,3 +27,6 @@ The client website now embeds an interactive OpenStreetMap map of the public ser
 
 ## October 5: ride-style Visits booking
 The public Visits page at `/petassist-local/` is now a map-first booking screen in the shared charcoal, red, white, and gold palette. Clients enter a visit address, choose Nail Trim ($35), Medication Care ($45), Sample Collection ($55), or Wellness Check ($65), then send a request. The private visit page is the same bottom sheet: progress, messages, and PayPal or Apple Pay only after the business confirms. Payment still uses the Care Line worker checkout. No advertising or analytics was added. The OpenStreetMap frame still receives only the public service area.
+
+## October 5: owner location stays private
+Clients never receive the business service-area coordinates, label, map, or distance. The ride screen uses a decorative grid, not a live map. The business app still calculates distance for the owner only. Optional client location sharing still goes to the business and can be removed from the private page.
