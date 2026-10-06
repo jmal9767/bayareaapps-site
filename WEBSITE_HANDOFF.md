@@ -24,3 +24,6 @@ The Visits private page follows an Uber-style service flow adapted to a single p
 
 ### General-area map
 The client website now embeds an interactive OpenStreetMap map of the public service area on both the landing and private visit page. It has no exact-location marker. Only the public area coordinates are sent to the embed; never client pins, addresses or access links. This supersedes the earlier map-link-only description. CSP permits the OpenStreetMap frame and the native preview permits that exact embed as a subframe while keeping main navigation restricted to the business website. Privacy text explains the map provider. The site retains no decorative photos or imagery. The actual area must be chosen by the owner; no location has been guessed.
+
+## Care Line private messages — October 5, 2026
+Written care-line services now use private website conversations answered in the owner app. The care-line landing page and service preview reflect that workflow. Clients bookmark their private link and return for replies; no SMS/email notifications are promised. Phone Support remains a separate arranged call. Prices and the business PayPal recipient are unchanged.
