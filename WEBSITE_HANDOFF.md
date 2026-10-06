@@ -2,8 +2,8 @@
 
 The three public pages share Bay Area Apps charcoal (#0e1014), red (#c81e30), and gold (#f2c65b), while preserving distinct layouts:
 - / — Bay Area Apps studio and project grid.
-- /paws-whiskers/ — Paws & Whiskers Care Line, pet illustrations, editorial support and curved pricing panels. Current prices: Quick $10, Detailed $15, Phone $25, Free Community Support.
-- /petassist-local/ — Paws & Whiskers Visits, pet illustrations, appointment form, service pricing and a private client page. The legacy URL remains stable.
+- /paws-whiskers/ — Paws & Whiskers Help Line, pet illustrations, editorial support and curved pricing panels. Current prices: Quick $10, Detailed $15, Phone $25, Free Community Support.
+- /petassist-local/ — Paws & Whiskers Visit, pet illustrations, appointment form, service pricing and a private client page. The legacy URL remains stable.
 
 Clients use the website. The business owner uses the private iPhone app; no client installation or public provider marketplace is required. Visit requests enter the protected business inbox. Checkout opens after the owner confirms a visit. Client and business messages appear on the private client page. Appointment state and PayPal payment/refund state remain separate.
 
@@ -25,10 +25,10 @@ The Visits private page follows an Uber-style service flow adapted to a single p
 ### General-area map
 The client website now embeds an interactive OpenStreetMap map of the public service area on both the landing and private visit page. It has no exact-location marker. Only the public area coordinates are sent to the embed; never client pins, addresses or access links. This supersedes the earlier map-link-only description. CSP permits the OpenStreetMap frame and the native preview permits that exact embed as a subframe while keeping main navigation restricted to the business website. Privacy text explains the map provider. The site retains no decorative photos or imagery. The actual area must be chosen by the owner; no location has been guessed.
 
-## Care Line private messages — October 5, 2026
+## Help Line private messages — October 5, 2026
 Written care-line services now use private website conversations answered in the owner app. The care-line landing page and service preview reflect that workflow. Clients bookmark their private link and return for replies; no SMS/email notifications are promised. Phone Support remains a separate arranged call. Prices and the business PayPal recipient are unchanged.
 ## October 5: ride-style Visits booking
-The public Visits page at `/petassist-local/` is now a map-first booking screen in the shared charcoal, red, white, and gold palette. Clients enter a visit address, choose Nail Trim ($35), Medication Care ($45), Sample Collection ($55), or Wellness Check ($65), then send a request. The private visit page is the same bottom sheet: progress, messages, and PayPal or Apple Pay only after the business confirms. Payment still uses the Care Line worker checkout. No advertising or analytics was added. The OpenStreetMap frame still receives only the public service area.
+The public Visits page at `/petassist-local/` is now a map-first booking screen in the shared charcoal, red, white, and gold palette. Clients enter a visit address, choose Nail Trim ($35), Medication Care ($45), Sample Collection ($55), or Wellness Check ($65), then send a request. The private visit page is the same bottom sheet: progress, messages, and PayPal or Apple Pay only after the business confirms. Payment still uses the Help Line worker checkout. No advertising or analytics was added. The OpenStreetMap frame still receives only the public service area.
 
 ## October 5: owner location stays private
 Clients never receive the business service-area coordinates, label, map, or distance. The ride screen uses a decorative grid, not a live map. The business app still calculates distance for the owner only. Optional client location sharing still goes to the business and can be removed from the private page.

@@ -67,7 +67,7 @@ const visitStages = [
   {status:'accepted',title:'Confirmed',heading:'Your visit is confirmed',note:'Your appointment time is shown below. We will update this page when we are on the way.'},
   {status:'en-route',title:'On the way',heading:'We’re on the way to your pet',note:'Our business has marked this visit as on the way. Send a message if there are access instructions. This is a progress update, not a live location or arrival estimate.'},
   {status:'in-progress',title:'Caring for your pet',heading:'Your pet’s visit is underway',note:'Our business has started your visit. Your appointment details and messages stay available here.'},
-  {status:'completed',title:'Completed',heading:'Your pet’s visit is complete',note:'Thank you for choosing Paws & Whiskers Visits. You can review payment status and message our business below.'}
+  {status:'completed',title:'Completed',heading:'Your pet’s visit is complete',note:'Thank you for choosing Paws & Whiskers Visit. You can review payment status and message our business below.'}
 ];
 function renderProgress(visit) {
   if (!document.getElementById('journey-title') || !document.getElementById('visit-progress')) return;
@@ -110,7 +110,7 @@ function render(visit) {
   for (const message of visit.messages) {
     const item = document.createElement('li'), sender = document.createElement('strong'), text = document.createElement('p'), time = document.createElement('time');
     item.className = message.sender === 'business' ? 'business' : 'client';
-    sender.textContent = message.sender === 'business' ? 'Paws & Whiskers Visits' : 'You';
+    sender.textContent = message.sender === 'business' ? 'Paws & Whiskers Visit' : 'You';
     text.textContent = message.text; time.textContent = new Date(message.createdAt).toLocaleString(); time.dateTime = message.createdAt;
     item.append(sender, text, time); list.append(item);
   }
@@ -136,7 +136,7 @@ document.getElementById('message-form').addEventListener('submit', async event =
   const input = document.getElementById('visit-message'), button = document.getElementById('message-send'), text = input.value.trim();
   if (businessPreview || !text || text.length > 2000 || button.disabled || !currentVisit || !currentAccess) return;
   button.disabled = true; status(portalStatus, 'Sending your message…');
-  try { render(await api('/petassist/client/visits/' + currentVisit + '/messages', 'POST', { text }, currentAccess)); input.value = ''; status(portalStatus, 'Message sent to Paws & Whiskers Visits.'); }
+  try { render(await api('/petassist/client/visits/' + currentVisit + '/messages', 'POST', { text }, currentAccess)); input.value = ''; status(portalStatus, 'Message sent to Paws & Whiskers Visit.'); }
   catch (error) { status(portalStatus, error.message, true); }
   finally { button.disabled = false; }
 });
