@@ -1,6 +1,6 @@
 'use strict';
 const businessPreview = window.pawsBusinessPreview === true;
-let serviceArea = null, requestLocation = null, currentVersion = null;
+let requestLocation = null, currentVersion = null;
 const visitsAPI = 'https://vet-helpline-development.dkjmmz6whh.workers.dev';
 const menu = document.querySelector('.menu'), links = document.querySelector('#main-links');
 menu.addEventListener('click', () => menu.setAttribute('aria-expanded', String(links.classList.toggle('open'))));
@@ -29,6 +29,12 @@ async function api(path, method = 'GET', body = null, access = null) {
 }
 requestForm.addEventListener('submit', async event => {
   event.preventDefault();
+  const detailsStep = requestForm.querySelector('[data-step="details"]');
+  if (detailsStep.hidden) {
+    if (!requestForm.querySelector('[data-step="service"]').hidden) document.getElementById('to-details').click();
+    else document.getElementById('to-service').click();
+    return;
+  }
   if (businessPreview || !requestForm.reportValidity()) return;
   const submit = document.getElementById('request-send');
   if (submit.disabled) return;
@@ -82,11 +88,9 @@ function render(visit) {
   currentVersion = visit.version;
   if (document.getElementById('visit-address')) {
   document.getElementById('visit-address').textContent = 'Your visit address: ' + visit.address;
-  document.getElementById('visit-area').textContent = visit.serviceArea ? 'Our public service area: ' + visit.serviceArea.label : 'Ask us about availability for your address. Our service area has not been published yet.';
-  document.getElementById('visit-distance').textContent = visit.distanceMiles != null ? 'Approximately ' + visit.distanceMiles.toFixed(1) + ' miles from our service area (straight-line).' : 'Distance is available once both our service area and your visit location are known.';
-  const addressMap = document.getElementById('visit-map'); addressMap.href = mapURL(visit.location ? visit.location.latitude + ',' + visit.location.longitude : visit.address); addressMap.textContent = visit.location ? 'View visit location in Maps' : 'View visit address in Maps'; addressMap.hidden = !visit.address;
-  setAreaMap(document.getElementById('visit-area-map'), visit.serviceArea);
-  renderAreaMap(document.getElementById('private-area-map'), visit.serviceArea);
+  const addressMap = document.getElementById('visit-map');
+  addressMap.href = mapURL(visit.address);
+  addressMap.hidden = !visit.address;
   document.getElementById('portal-location-remove').hidden = !visit.location;
   }
 
@@ -95,8 +99,12 @@ function render(visit) {
     const item = document.createElement('span'); item.textContent = value; summary.append(item);
   }
   const pay = document.getElementById('visit-pay'), link = safeCheckout(visit.checkoutURL, currentVisit);
-  pay.hidden = !(['accepted', 'en-route', 'in-progress', 'completed'].includes(visit.visitStatus) && visit.status === 'Payment requested' && link);
+  const payable = ['accepted', 'en-route', 'in-progress', 'completed'].includes(visit.visitStatus) && visit.status === 'Payment requested' && link;
+  pay.hidden = !payable;
   if (link) pay.href = link;
+  pay.textContent = payable ? 'Pay ' + visit.amount + ' · PayPal or Apple Pay' : 'Pay with PayPal or Apple Pay';
+  const pill = document.getElementById('status-pill');
+  if (pill) pill.textContent = visit.visitStatus === 'cancelled' ? 'Cancelled' : (visitStages.find(stage => stage.status === visit.visitStatus)?.title || 'Visit');
   document.getElementById('visit-payment-note').textContent = visit.visitStatus === 'cancelled' ? 'Your visit is cancelled. Contact us about any payment or refund questions.' : visit.visitStatus === 'requested' ? 'Your preferred time is awaiting confirmation. Payment will become available after we confirm your visit.' : visit.status === 'Paid' ? 'Payment received. Thank you! Keep this page for visit updates.' : ['Refunded', 'Partially refunded'].includes(visit.status) ? 'Payment status: ' + visit.status + '. Contact us for any refund questions.' : 'Your appointment is confirmed. Review your service and price before payment.';
   const list = document.getElementById('visit-messages'); list.replaceChildren();
   for (const message of visit.messages) {
@@ -118,9 +126,10 @@ async function refresh(showSuccess = false) {
 function openPrivatePage() {
   const match = location.hash.match(/^#visit=([a-f0-9]{32})\.([a-f0-9]{64})$/);
   currentVisit = match ? match[1] : null; currentAccess = match ? match[2] : null;
+  document.body.classList.toggle('trip', !!match);
   document.getElementById('visit-portal').hidden = !match;
   document.getElementById('visit-landing').hidden = !!match;
-  if (match) { status(portalStatus, 'Loading your visit…'); refresh(); window.scrollTo(0, 0); }
+  if (match) { status(portalStatus, 'Loading your visit…'); refresh(); }
 }
 document.getElementById('message-form').addEventListener('submit', async event => {
   event.preventDefault();
@@ -141,23 +150,7 @@ document.addEventListener('visibilitychange', () => { if (!document.hidden) refr
 setInterval(() => refresh(), 30000);
 openPrivatePage();
 
-function mapURL(query) { const url = new URL('https://maps.apple.com/'); url.searchParams.set('q',query); return url.href; }
-function setAreaMap(link, area) { link.hidden = !area; if (area) link.href = mapURL(area.latitude + ',' + area.longitude); }
-function approximateMiles(a,b) {
-  const rad = value => value * Math.PI / 180;
-  const h = Math.sin(rad(b.latitude-a.latitude)/2)**2 + Math.cos(rad(a.latitude))*Math.cos(rad(b.latitude))*Math.sin(rad(b.longitude-a.longitude)/2)**2;
-  return 3958.7613 * 2 * Math.asin(Math.sqrt(Math.min(1,Math.max(0,h))));
-}
-async function loadServiceArea() {
-  const text = document.getElementById('public-service-area');
-  if (!text) return;
-  try {
-    serviceArea = await api('/petassist/service-area');
-    text.textContent = serviceArea ? 'Our public service area: ' + serviceArea.label : 'Contact info@bayareaapps.com to check availability in your area. We confirm every visit before payment.';
-    setAreaMap(document.getElementById('public-service-map'),serviceArea);
-    renderAreaMap(document.getElementById('public-area-map'),serviceArea);
-  } catch { text.textContent = 'Our service area could not load. Contact info@bayareaapps.com to check your address.'; }
-}
+function mapURL(query) { const url = new URL('https://maps.apple.com/'); url.searchParams.set('q', query); return url.href; }
 function oneVisitLocation() {
   return new Promise((resolve,reject) => {
     if (!navigator.geolocation) { reject(new Error('Location is unavailable in this browser. You can still use your visit address.')); return; }
@@ -180,7 +173,7 @@ for (const kind of ['request','portal']) {
       if (!consent.checked) { status(message,'Location was not shared.'); return; }
       if (kind === 'request') {
         requestLocation = location; remove.hidden = false;
-        status(message,(serviceArea ? 'Approximately ' + approximateMiles(serviceArea,location).toFixed(1) + ' miles from our service area (straight-line). ' : '') + 'This location will be included when you send your request.');
+        status(message, 'Your location will be included when you send the request. This does not show where we are.');
       } else {
         render(await api('/petassist/client/visits/' + currentVisit + '/location','PATCH',{location,locationConfirmed:true,expectedVersion:currentVersion},currentAccess));
         status(message,'Visit location shared with our business. No live tracking is enabled.');
@@ -200,27 +193,35 @@ for (const kind of ['request','portal']) {
   });
 }
 if (businessPreview) {
-  document.querySelectorAll('form input, form select, form textarea, form button, .location-confirm input, [id$="-location-share"], [id$="-location-remove"]').forEach(element => { element.disabled = true; });
+  document.querySelectorAll('form input, form select, form textarea, form button:not([data-nav]), .location-confirm input, [id$="-location-share"], [id$="-location-remove"]').forEach(element => { element.disabled = true; });
   document.querySelectorAll('form').forEach(form => form.addEventListener('submit',event => event.preventDefault()));
   document.getElementById('visit-pay').addEventListener('click',event => event.preventDefault());
 }
-loadServiceArea();
-
-document.querySelectorAll('.service-choice').forEach(link => link.addEventListener('click',() => {
+document.querySelectorAll('.service-choice').forEach(link => link.addEventListener('click', () => {
   if (businessPreview) return;
   requestForm.elements.service.value = link.dataset.service;
-  requestForm.elements.address.focus({preventScroll:true});
+  syncFare();
+  requestForm.elements.address.focus({ preventScroll: true });
 }));
 
-function renderAreaMap(frame,area) {
-  if (!frame) return;
-  frame.hidden = !area;
-  if (!area) { frame.removeAttribute('src'); return; }
-  // Only the public area goes to the map provider; never the client's pin or private link.
-  const latitude = Math.max(-85,Math.min(85,area.latitude)), longitude = area.longitude;
-  const span = 0.1 / Math.max(0.2,Math.cos(latitude * Math.PI / 180));
-  const url = new URL('https://www.openstreetmap.org/export/embed.html');
-  url.searchParams.set('bbox',[Math.max(-180,longitude-span),Math.max(-85,latitude-0.075),Math.min(180,longitude+span),Math.min(85,latitude+0.075)].join(','));
-  url.searchParams.set('layer','mapnik');
-  if (frame.getAttribute('src') !== url.href) frame.src = url.href;
+const fares = { nailTrim: '$35', medAdmin: '$45', labCollection: '$55', wellnessCheck: '$65' };
+function showStep(name) {
+  document.querySelectorAll('#request-form .step').forEach(step => { step.hidden = step.dataset.step !== name; });
+  const sheet = document.getElementById('visit-landing');
+  if (sheet) sheet.scrollTop = 0;
 }
+function syncFare() {
+  const fare = document.getElementById('request-fare');
+  const selected = requestForm.elements.service.value;
+  if (fare) fare.textContent = fares[selected] || '';
+  const send = document.getElementById('request-send');
+  if (send && fares[selected]) send.textContent = 'Request visit · ' + fares[selected];
+}
+document.getElementById('to-service').addEventListener('click', () => {
+  if (!requestForm.elements.address.value.trim()) { requestForm.elements.address.reportValidity(); return; }
+  showStep('service');
+});
+document.getElementById('to-details').addEventListener('click', () => { syncFare(); showStep('details'); });
+document.querySelectorAll('[data-back]').forEach(button => button.addEventListener('click', () => showStep(button.dataset.back)));
+requestForm.elements.service.forEach(input => input.addEventListener('change', syncFare));
+syncFare();
