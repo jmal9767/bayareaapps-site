@@ -24,3 +24,6 @@ The Visits private page follows an Uber-style service flow adapted to a single p
 
 ### General-area map
 The client website now embeds an interactive OpenStreetMap map of the public service area on both the landing and private visit page. It has no exact-location marker. Only the public area coordinates are sent to the embed; never client pins, addresses or access links. This supersedes the earlier map-link-only description. CSP permits the OpenStreetMap frame and the native preview permits that exact embed as a subframe while keeping main navigation restricted to the business website. Privacy text explains the map provider. The site retains no decorative photos or imagery. The actual area must be chosen by the owner; no location has been guessed.
+
+## October 5: ride-style Visits booking
+The public Visits page at `/petassist-local/` is now a map-first booking screen in the shared charcoal, red, white, and gold palette. Clients enter a visit address, choose Nail Trim ($35), Medication Care ($45), Sample Collection ($55), or Wellness Check ($65), then send a request. The private visit page is the same bottom sheet: progress, messages, and PayPal or Apple Pay only after the business confirms. Payment still uses the Care Line worker checkout. No advertising or analytics was added. The OpenStreetMap frame still receives only the public service area.

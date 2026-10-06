@@ -29,6 +29,12 @@ async function api(path, method = 'GET', body = null, access = null) {
 }
 requestForm.addEventListener('submit', async event => {
   event.preventDefault();
+  const detailsStep = requestForm.querySelector('[data-step="details"]');
+  if (detailsStep.hidden) {
+    if (!requestForm.querySelector('[data-step="service"]').hidden) document.getElementById('to-details').click();
+    else document.getElementById('to-service').click();
+    return;
+  }
   if (businessPreview || !requestForm.reportValidity()) return;
   const submit = document.getElementById('request-send');
   if (submit.disabled) return;
@@ -95,8 +101,12 @@ function render(visit) {
     const item = document.createElement('span'); item.textContent = value; summary.append(item);
   }
   const pay = document.getElementById('visit-pay'), link = safeCheckout(visit.checkoutURL, currentVisit);
-  pay.hidden = !(['accepted', 'en-route', 'in-progress', 'completed'].includes(visit.visitStatus) && visit.status === 'Payment requested' && link);
+  const payable = ['accepted', 'en-route', 'in-progress', 'completed'].includes(visit.visitStatus) && visit.status === 'Payment requested' && link;
+  pay.hidden = !payable;
   if (link) pay.href = link;
+  pay.textContent = payable ? 'Pay ' + visit.amount + ' · PayPal or Apple Pay' : 'Pay with PayPal or Apple Pay';
+  const pill = document.getElementById('status-pill');
+  if (pill) pill.textContent = visit.visitStatus === 'cancelled' ? 'Cancelled' : (visitStages.find(stage => stage.status === visit.visitStatus)?.title || 'Visit');
   document.getElementById('visit-payment-note').textContent = visit.visitStatus === 'cancelled' ? 'Your visit is cancelled. Contact us about any payment or refund questions.' : visit.visitStatus === 'requested' ? 'Your preferred time is awaiting confirmation. Payment will become available after we confirm your visit.' : visit.status === 'Paid' ? 'Payment received. Thank you! Keep this page for visit updates.' : ['Refunded', 'Partially refunded'].includes(visit.status) ? 'Payment status: ' + visit.status + '. Contact us for any refund questions.' : 'Your appointment is confirmed. Review your service and price before payment.';
   const list = document.getElementById('visit-messages'); list.replaceChildren();
   for (const message of visit.messages) {
@@ -118,9 +128,10 @@ async function refresh(showSuccess = false) {
 function openPrivatePage() {
   const match = location.hash.match(/^#visit=([a-f0-9]{32})\.([a-f0-9]{64})$/);
   currentVisit = match ? match[1] : null; currentAccess = match ? match[2] : null;
+  document.body.classList.toggle('trip', !!match);
   document.getElementById('visit-portal').hidden = !match;
   document.getElementById('visit-landing').hidden = !!match;
-  if (match) { status(portalStatus, 'Loading your visit…'); refresh(); window.scrollTo(0, 0); }
+  if (match) { status(portalStatus, 'Loading your visit…'); refresh(); }
 }
 document.getElementById('message-form').addEventListener('submit', async event => {
   event.preventDefault();
@@ -200,17 +211,40 @@ for (const kind of ['request','portal']) {
   });
 }
 if (businessPreview) {
-  document.querySelectorAll('form input, form select, form textarea, form button, .location-confirm input, [id$="-location-share"], [id$="-location-remove"]').forEach(element => { element.disabled = true; });
+  document.querySelectorAll('form input, form select, form textarea, form button:not([data-nav]), .location-confirm input, [id$="-location-share"], [id$="-location-remove"]').forEach(element => { element.disabled = true; });
   document.querySelectorAll('form').forEach(form => form.addEventListener('submit',event => event.preventDefault()));
   document.getElementById('visit-pay').addEventListener('click',event => event.preventDefault());
 }
 loadServiceArea();
 
-document.querySelectorAll('.service-choice').forEach(link => link.addEventListener('click',() => {
+document.querySelectorAll('.service-choice').forEach(link => link.addEventListener('click', () => {
   if (businessPreview) return;
   requestForm.elements.service.value = link.dataset.service;
-  requestForm.elements.address.focus({preventScroll:true});
+  syncFare();
+  requestForm.elements.address.focus({ preventScroll: true });
 }));
+
+const fares = { nailTrim: '$35', medAdmin: '$45', labCollection: '$55', wellnessCheck: '$65' };
+function showStep(name) {
+  document.querySelectorAll('#request-form .step').forEach(step => { step.hidden = step.dataset.step !== name; });
+  const sheet = document.getElementById('visit-landing');
+  if (sheet) sheet.scrollTop = 0;
+}
+function syncFare() {
+  const fare = document.getElementById('request-fare');
+  const selected = requestForm.elements.service.value;
+  if (fare) fare.textContent = fares[selected] || '';
+  const send = document.getElementById('request-send');
+  if (send && fares[selected]) send.textContent = 'Request visit · ' + fares[selected];
+}
+document.getElementById('to-service').addEventListener('click', () => {
+  if (!requestForm.elements.address.value.trim()) { requestForm.elements.address.reportValidity(); return; }
+  showStep('service');
+});
+document.getElementById('to-details').addEventListener('click', () => { syncFare(); showStep('details'); });
+document.querySelectorAll('[data-back]').forEach(button => button.addEventListener('click', () => showStep(button.dataset.back)));
+requestForm.elements.service.forEach(input => input.addEventListener('change', syncFare));
+syncFare();
 
 function renderAreaMap(frame,area) {
   if (!frame) return;

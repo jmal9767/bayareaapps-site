@@ -1,21 +1,155 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src https://vet-helpline-development.dkjmmz6whh.workers.dev; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-src https://www.openstreetmap.org"><title>Paws &amp; Whiskers Visits | Bay Area Apps</title><meta name="description" content="Request an at-home pet-care appointment, message our business, and pay securely after your visit is confirmed."><link rel="canonical" href="https://bayareaapps.com/petassist-local/"><meta property="og:title" content="Paws &amp; Whiskers Visits"><meta property="og:description" content="Pet care at home. Request your visit and keep appointment details and messages on your private visit page."><meta property="og:type" content="website"><meta property="og:url" content="https://bayareaapps.com/petassist-local/"><link rel="stylesheet" href="/assets/local-theme.css"><link rel="stylesheet" href="/assets/brand-colors.css"><link rel="stylesheet" href="/assets/visits.css?v=20261004.3"></head>
-<body><a class="skip" href="#main">Skip to content</a><header><div class="wrap"><nav class="nav" aria-label="Main navigation"><a class="brand" href="/petassist-local/">Paws &amp; Whiskers Visits<small>BY BAY AREA APPS</small></a><button type="button" class="menu" aria-expanded="false" aria-controls="main-links">Menu</button><div class="links" id="main-links"><a href="/">Bay Area Apps</a><a href="/paws-whiskers/">Care Line</a><a href="#request">Request a visit</a></div></nav></div></header>
-<main id="main" class="wrap">
-<section class="visit-portal" id="visit-portal" hidden aria-labelledby="portal-title"><span class="label">Your private visit page</span><h1 id="portal-title">Your pet-care visit</h1><p class="visit-note">Keep this private link for updates and messages. Anyone you share it with can view this page.</p><section class="visit-journey" aria-labelledby="journey-title"><span class="label">Your visit progress</span><h2 id="journey-title">Waiting for confirmation</h2><p id="journey-note" class="visit-note"></p><ol class="visit-progress" id="visit-progress" aria-label="Appointment progress"></ol><p class="visit-note">Updates appear here as our business moves through your visit. Keep this page open or return using your private link.</p></section><div class="visit-summary" id="visit-summary"></div><div class="portal-actions"><a class="button" id="visit-pay" hidden target="_blank" rel="noopener noreferrer">Pay with PayPal or Apple Pay</a><button class="button secondary" type="button" id="visit-refresh">Refresh updates</button><button class="button secondary" type="button" id="visit-copy">Copy private link</button></div><p class="visit-note" id="visit-payment-note"></p><p class="form-status" id="portal-status" role="status"></p><section class="visit-location" aria-labelledby="visit-location-title"><h2 id="visit-location-title">Location and distance</h2><p id="visit-address"></p><p id="visit-area"></p><iframe class="service-area-map" id="private-area-map" title="Our approximate service area map" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups" hidden></iframe><p class="visit-note">The map shows our general service area, not our current location or a personal street address. It does not mark your visit address.</p><p id="visit-distance"></p><div class="portal-actions"><a class="button secondary" id="visit-map" target="_blank" rel="noopener noreferrer" hidden>View visit address in Maps</a><a class="button secondary" id="visit-area-map" target="_blank" rel="noopener noreferrer" hidden>View our service area in Maps</a></div><label class="location-confirm"><input type="checkbox" id="portal-location-confirm"> I am at the visit address and want to share this location with the business.</label><div class="portal-actions"><button class="button secondary" type="button" id="portal-location-share">Share visit location</button><button class="button secondary" type="button" id="portal-location-remove" hidden>Remove shared location</button></div><p class="form-status" id="location-status" role="status"></p><p class="visit-note">Distance is approximate and straight-line from our public service area. It is not driving distance, arrival time, or live tracking. Location sharing is optional; your address can also be located by our business. Map links open Apple Maps.</p></section><h2>Message your pet-care business</h2><ul class="visit-messages" id="visit-messages" aria-label="Visit messages"></ul><form id="message-form"><label for="visit-message">Send a message</label><textarea id="visit-message" rows="3" maxlength="2000" required placeholder="Ask a question or request a scheduling change"></textarea><button class="button" id="message-send" type="submit">Send message</button></form><p class="visit-note">Messages refresh while this page is open. Return to this link to check for replies. For help, email <a href="mailto:info@bayareaapps.com">info@bayareaapps.com</a>.</p></section>
-<div id="visit-landing">
-<section class="visits-hero visits-hero-text"><div><span class="label">Paws &amp; Whiskers Visits</span><h1>Little paws.<br>Big hearts.<br><span>Care at home.</span></h1><p>Choose care for your pet, tell us where to visit, and follow your appointment from request to completion. Your private page keeps progress, messages, and payment together.</p><div class="actions"><a class="button" href="#request">Request a visit</a><a class="button secondary" href="#how-it-works">How it works</a></div></div></section>
-<section class="service-area-card" aria-labelledby="service-area-title"><h2 id="service-area-title">Local help for your pets</h2><p id="public-service-area" role="status">Loading our service area…</p><iframe class="service-area-map" id="public-area-map" title="Our approximate service area map" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups" hidden></iframe><p class="visit-note">This map shows our general area. It is not our exact location or a promise of coverage for every address shown.</p><a class="button secondary" id="public-service-map" target="_blank" rel="noopener noreferrer" hidden>View service area in Maps</a><p class="visit-note">Check the service area before requesting. We confirm availability for your address before payment.</p></section><div class="visit-prices" aria-label="Services and prices"><article class="visit-price"><h2>Nail Trim</h2><strong>$35</strong><a class="service-choice" href="#request" data-service="nailTrim">Choose Nail Trim</a></article><article class="visit-price"><h2>Medication Administration</h2><strong>$45</strong><a class="service-choice" href="#request" data-service="medAdmin">Choose Medication Care</a></article><article class="visit-price"><h2>Lab Sample Collection</h2><strong>$55</strong><a class="service-choice" href="#request" data-service="labCollection">Choose Sample Collection</a></article><article class="visit-price"><h2>Wellness Check</h2><strong>$65</strong><a class="service-choice" href="#request" data-service="wellnessCheck">Choose Wellness Check</a></article></div>
-<p class="visit-note">A request is not a confirmed appointment. We confirm availability and whether the service is suitable before payment. For diagnosis, prescriptions, medical concerns, or emergencies, contact a licensed veterinarian.</p>
-<section class="visit-request" id="request" aria-labelledby="request-title"><span class="label">Start with your pet</span><h2 id="request-title">Request a visit.</h2><p>Start with the address where your pet needs care. Choose your service and preferred time; we confirm availability before charging you. No client app download is needed.</p><form class="visit-form" id="request-form">
-<label class="wide">Visit address<input name="address" autocomplete="street-address" maxlength="500" required></label>
-<label>Your name<input name="clientName" autocomplete="name" maxlength="100" required></label><label>Email<input name="email" type="email" autocomplete="email" maxlength="200" required></label><label>Phone (optional)<input name="phone" type="tel" autocomplete="tel" maxlength="40"></label><label>Pet’s name<input name="petName" maxlength="100" required></label>
-<label>Species<select name="species"><option>Dog</option><option>Cat</option><option>Rabbit</option><option>Bird</option><option>Other</option></select></label><label>Service<select name="service" required><option value="nailTrim">Nail Trim — $35</option><option value="medAdmin">Medication Administration — $45</option><option value="labCollection">Lab Sample Collection — $55</option><option value="wellnessCheck">Wellness Check — $65</option></select></label>
-<label class="wide">Preferred visit date and time<input name="preferredAt" type="datetime-local" required><span class="visit-note">Times are shown in your device’s local time. We will confirm the appointment time.</span></label><div class="wide visit-location"><label class="location-confirm"><input type="checkbox" id="request-location-confirm"> I am at the visit address and want to include my location with this request (optional).</label><div class="portal-actions"><button class="button secondary" type="button" id="request-location-share">Check distance and include visit location</button><button class="button secondary" type="button" id="request-location-remove" hidden>Remove location</button></div><p class="form-status" id="request-location-status" role="status"></p><p class="visit-note">Your browser asks permission. Only one location is used; we do not track you. You can submit your address without sharing location. Distances are straight-line estimates, not travel times.</p></div><label class="wide">Visit notes (optional)<textarea name="notes" rows="4" maxlength="2000" placeholder="Tell us what would help us prepare for your pet’s visit."></textarea></label>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src https://vet-helpline-development.dkjmmz6whh.workers.dev; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-src https://www.openstreetmap.org">
+<title>Paws & Whiskers Visits | Bay Area Apps</title>
+<meta name="description" content="Request an at-home pet-care visit. Follow your appointment on a private page, then pay with PayPal or Apple Pay after we confirm.">
+<link rel="canonical" href="https://bayareaapps.com/petassist-local/">
+<meta property="og:title" content="Paws & Whiskers Visits">
+<meta property="og:description" content="Request pet care at home, follow the visit, and pay securely after confirmation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bayareaapps.com/petassist-local/">
+<link rel="stylesheet" href="/assets/local-theme.css">
+<link rel="stylesheet" href="/assets/brand-colors.css">
+<link rel="stylesheet" href="/assets/visits.css?v=20261005.1">
+</head>
+<body class="ride-app">
+<a class="skip" href="#main">Skip to content</a>
+<div class="map-stage">
+<iframe class="stage-map" id="public-area-map" title="Our approximate service area map" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups" hidden></iframe>
+<iframe class="stage-map" id="private-area-map" title="Our approximate service area map" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups" hidden></iframe>
+<div class="map-shade" aria-hidden="true"></div>
+<p class="map-caption" id="map-caption">The map shows our general service area, not a live car or your home address.</p>
+</div>
+<header class="ride-top">
+<nav class="nav" aria-label="Main navigation">
+<a class="brand" href="/petassist-local/">Paws & Whiskers Visits<small>BAY AREA APPS</small></a>
+<button type="button" class="menu" aria-expanded="false" aria-controls="main-links">Menu</button>
+<div class="links" id="main-links">
+<a href="/">Bay Area Apps</a>
+<a href="/paws-whiskers/">Care Line</a>
+<a href="/privacy/">Privacy</a>
+<a href="mailto:info@bayareaapps.com">Email</a>
+</div>
+</nav>
+</header>
+<main id="main">
+<section class="sheet" id="visit-landing" aria-labelledby="request-title">
+<div class="sheet-handle" aria-hidden="true"></div>
+<p class="where-kicker">At-home pet care</p>
+<h1 id="request-title">Where should we visit?</h1>
+<p class="lede" id="public-service-area" role="status">Loading our service area…</p>
+<form class="ride-form" id="request-form">
+<div class="step" data-step="where">
+<label class="where-field">Visit address
+<span class="where-dot" aria-hidden="true"></span>
+<input name="address" autocomplete="street-address" maxlength="500" required placeholder="Street, city, ZIP">
+</label>
+<div class="visit-location">
+<label class="location-confirm"><input type="checkbox" id="request-location-confirm"> I am at this address and want to include my location (optional).</label>
+<div class="row-actions">
+<button class="button secondary" type="button" id="request-location-share">Check distance</button>
+<button class="button secondary" type="button" id="request-location-remove" hidden>Remove location</button>
+</div>
+<p class="form-status" id="request-location-status" role="status"></p>
+<p class="visit-note">One location only. Not live tracking. You can request with the address alone. <a id="public-service-map" href="https://maps.apple.com/" target="_blank" rel="noopener noreferrer" hidden>View service area in Maps</a></p>
+</div>
+<button class="button" type="button" id="to-service" data-nav>Choose a service</button>
+</div>
+<div class="step" data-step="service" hidden>
+<fieldset class="ride-options">
+<legend>Choose your visit</legend>
+<label class="ride-option"><input type="radio" name="service" value="nailTrim" checked><span><strong>Nail Trim</strong><small>A short at-home trim</small></span><b>$35</b></label>
+<label class="ride-option"><input type="radio" name="service" value="medAdmin" data-service="medAdmin"><span><strong>Medication Care</strong><small>Help giving medication</small></span><b>$45</b></label>
+<label class="ride-option"><input type="radio" name="service" value="labCollection"><span><strong>Sample Collection</strong><small>Lab sample pickup</small></span><b>$55</b></label>
+<label class="ride-option"><input type="radio" name="service" value="wellnessCheck"><span><strong>Wellness Check</strong><small>A longer home visit</small></span><b>$65</b></label>
+</fieldset>
+<div class="row-actions">
+<button class="button secondary" type="button" data-nav data-back="where">Back</button>
+<button class="button" type="button" id="to-details" data-nav>Continue</button>
+</div>
+</div>
+<div class="step" data-step="details" hidden>
+<h2 id="details-title" tabindex="-1">Confirm your visit</h2>
+<p class="lede">We confirm the time before any charge. Payment is PayPal or Apple Pay, the same checkout as the Care Line.</p>
+<label>Your name<input name="clientName" autocomplete="name" maxlength="100" required></label>
+<label>Email<input name="email" type="email" autocomplete="email" maxlength="200" required></label>
+<label>Phone (optional)<input name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
+<label>Pet’s name<input name="petName" maxlength="100" required></label>
+<label>Species<select name="species"><option>Dog</option><option>Cat</option><option>Rabbit</option><option>Bird</option><option>Other</option></select></label>
+<label>Preferred date and time<input name="preferredAt" type="datetime-local" required></label>
+<label>Notes (optional)<textarea name="notes" rows="3" maxlength="2000" placeholder="Gate codes, temperament, or what to bring."></textarea></label>
 <label class="trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
-<label class="wide consent"><input type="checkbox" name="acceptedPrivacy" required><span>I agree to the <a href="/privacy/" target="_blank" rel="noopener">privacy notice</a> and understand that my visit details and messages will be saved to arrange this request. I will keep my private visit link safe.</span></label>
-<div class="wide"><button class="button" id="request-send" type="submit">Send Visit Request</button><p class="form-status" id="request-status" role="status"></p></div></form>
-<noscript><p>JavaScript is needed to submit a visit request here. Email <a href="mailto:info@bayareaapps.com">info@bayareaapps.com</a> to arrange a visit.</p></noscript></section>
-<section class="section" id="how-it-works"><span class="label">From request to visit</span><h2>Simple steps. Personal care.</h2><ol class="flow"><li><span class="step-count">1</span><strong>Request your visit</strong><p>Choose your service and preferred time. Save the private visit link you receive.</p></li><li><span class="step-count">2</span><strong>Confirm the details</strong><p>See your confirmed time and follow updates: on the way, caring for your pet, and visit completed. Message us on the same private page.</p></li><li><span class="step-count">3</span><strong>Pay securely</strong><p>After confirmation, pay through your booking’s PayPal or Apple Pay checkout on supported devices.</p></li></ol><p class="visit-note">Contact us on your private page for scheduling changes or cancellations. Refunds are reviewed through our business PayPal account; cancelling a visit does not automatically refund a payment.</p></section>
-<section class="sister"><h2>A care question today?</h2><p>Paws &amp; Whiskers Care Line offers everyday dog-and-cat care education and Free Community Support.</p><a class="button secondary" href="/paws-whiskers/">Visit the Care Line</a></section>
-</div></main><footer><div class="wrap"><span>© 2026 Bay Area Apps LLC</span><nav class="links" aria-label="Footer navigation"><a href="/">Bay Area Apps</a><a href="/paws-whiskers/">Care Line</a><a href="/privacy/">Privacy</a><a href="mailto:info@bayareaapps.com">info@bayareaapps.com</a></nav></div></footer><script src="/assets/visits.js?v=20261004.3" defer></script></body></html>
+<label class="consent"><input type="checkbox" name="acceptedPrivacy" required><span>I agree to the <a href="/privacy/" target="_blank" rel="noopener">privacy notice</a> and will keep my private visit link safe.</span></label>
+<p class="fare-line"><span>Visit total</span><strong id="request-fare">$35</strong></p>
+<div class="row-actions">
+<button class="button secondary" type="button" data-nav data-back="service">Back</button>
+<button class="button" id="request-send" type="submit">Request visit</button>
+</div>
+<p class="form-status" id="request-status" role="status"></p>
+<ol class="steps-mini">
+<li><span>1</span> Send the request. Save the private link.</li>
+<li><span>2</span> We confirm, then you can follow: on the way, caring for your pet, done.</li>
+<li><span>3</span> Pay on this page with PayPal or Apple Pay after confirmation.</li>
+</ol>
+</div>
+</form>
+<noscript><p>JavaScript is needed to request a visit. Email <a href="mailto:info@bayareaapps.com">info@bayareaapps.com</a>.</p></noscript>
+<footer class="ride-legal">
+<a href="/">Bay Area Apps</a>
+<a href="/paws-whiskers/">Care Line</a>
+<a href="/privacy/">Privacy</a>
+<a href="mailto:info@bayareaapps.com">info@bayareaapps.com</a>
+</footer>
+</section>
+
+<section class="sheet visit-portal" id="visit-portal" hidden aria-labelledby="portal-title">
+<div class="sheet-handle" aria-hidden="true"></div>
+<span class="status-pill" id="status-pill">Visit</span>
+<h1 id="portal-title">Your pet-care visit</h1>
+<h2 id="journey-title">Waiting for confirmation</h2>
+<p id="journey-note" class="visit-note"></p>
+<ol class="visit-progress" id="visit-progress" aria-label="Appointment progress"></ol>
+<div class="visit-summary" id="visit-summary"></div>
+<div class="pay-bar">
+<a class="button gold" id="visit-pay" hidden target="_blank" rel="noopener noreferrer">Pay with PayPal or Apple Pay</a>
+<p class="visit-note" id="visit-payment-note"></p>
+</div>
+<p class="form-status" id="portal-status" role="status"></p>
+<section class="visit-location" aria-labelledby="visit-location-title">
+<h2 id="visit-location-title">Pickup</h2>
+<p id="visit-address"></p>
+<p id="visit-area"></p>
+<p id="visit-distance"></p>
+<div class="portal-actions">
+<a class="button secondary" id="visit-map" target="_blank" rel="noopener noreferrer" hidden>Open in Maps</a>
+<a class="button secondary" id="visit-area-map" target="_blank" rel="noopener noreferrer" hidden>Service area</a>
+</div>
+<label class="location-confirm"><input type="checkbox" id="portal-location-confirm"> I am at the visit address and want to share this location.</label>
+<div class="portal-actions">
+<button class="button secondary" type="button" id="portal-location-share">Share visit location</button>
+<button class="button secondary" type="button" id="portal-location-remove" hidden>Remove shared location</button>
+</div>
+<p class="form-status" id="location-status" role="status"></p>
+<p class="visit-note">Straight-line distance from our public area. Not a driving time or live tracking.</p>
+</section>
+<h2>Messages</h2>
+<ul class="visit-messages" id="visit-messages" aria-label="Visit messages"></ul>
+<form id="message-form" class="ride-form">
+<label for="visit-message">Message the business</label>
+<textarea id="visit-message" rows="3" maxlength="2000" required placeholder="Access notes or a time change"></textarea>
+<button class="button" id="message-send" type="submit">Send</button>
+</form>
+<div class="portal-actions">
+<button class="button secondary" type="button" id="visit-refresh">Refresh</button>
+<button class="button secondary" type="button" id="visit-copy">Copy private link</button>
+</div>
+<p class="visit-note">Keep this link private. Anyone with it can view the visit and send messages. Email <a href="mailto:info@bayareaapps.com">info@bayareaapps.com</a> for help.</p>
+</section>
+</main>
+<script src="/assets/visits.js?v=20261005.1" defer></script>
+</body>
+</html>
