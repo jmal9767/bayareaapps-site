@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src https://vet-helpline-development.dkjmmz6whh.workers.dev; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-src 'none'">
+<title>Paws & Whiskers Visit | Bay Area Apps</title>
+<meta name="description" content="Request an at-home pet-care visit. Follow your appointment on a private page, then pay with PayPal or Apple Pay after we confirm.">
+<link rel="canonical" href="https://petassist-local-marketplace.dkjmmz6whh.workers.dev/">
+<meta property="og:title" content="Paws & Whiskers Visit">
+<meta property="og:description" content="Request pet care at home, follow the visit, and pay securely after confirmation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bayareaapps.com/petassist-local/">
+<link rel="stylesheet" href="/assets/local-theme.css">
+<link rel="stylesheet" href="/assets/brand-colors.css">
+<link rel="stylesheet" href="/assets/visits.css?v=20261005.2">
+</head>
+<body class="ride-app">
+<a class="skip" href="#main">Skip to content</a>
+<div class="map-stage" aria-hidden="true"></div>
+<header class="ride-top">
+<nav class="nav" aria-label="Main navigation">
+<span>Paws & Whiskers Visit<small>BAY AREA APPS</small></span>
+<button type="button" class="menu" aria-expanded="false" aria-controls="main-links">Menu</button>
+<div class="links" id="main-links">
+<span>Bay Area Apps</span>
+<span>Help Line</span>
+<a href="/privacy/">Privacy</a>
+<a href="mailto:info@bayareaapps.com">Email</a>
+</div>
+</nav>
+</header>
+<main id="main">
+<section class="sheet" id="visit-landing" aria-labelledby="request-title">
+<div class="sheet-handle" aria-hidden="true"></div>
+<p class="where-kicker">At-home pet care</p>
+<h1 id="request-title">Where should we visit?</h1>
+<p class="lede">Tell us where your pet needs care. We confirm the visit before you pay. This screen does not show our location or how far away we are.</p>
+<form class="ride-form" id="request-form">
+<div class="step" data-step="where">
+<label class="where-field">Visit address
+<span class="where-dot" aria-hidden="true"></span>
+<input name="address" autocomplete="street-address" maxlength="500" required placeholder="Street, city, ZIP">
+</label>
+<div class="visit-location">
+<label class="location-confirm"><input type="checkbox" id="request-location-confirm"> I am at this address and want to include my location (optional).</label>
+<div class="row-actions">
+<button class="button secondary" type="button" id="request-location-share">Include my location</button>
+<button class="button secondary" type="button" id="request-location-remove" hidden>Remove location</button>
+</div>
+<p class="form-status" id="request-location-status" role="status"></p>
+<p class="visit-note">Optional, and only if you are at the visit address. We use it to find you. It is not live tracking, and it does not show you where we are.</p>
+</div>
+<button class="button" type="button" id="to-service" data-nav>Choose a service</button>
+</div>
+<div class="step" data-step="service" hidden>
+<fieldset class="ride-options">
+<legend>Choose your visit</legend>
+<label class="ride-option"><input type="radio" name="service" value="nailTrim" checked><span><strong>Nail Trim</strong><small>A short at-home trim</small></span><b>$35</b></label>
+<label class="ride-option"><input type="radio" name="service" value="medAdmin" data-service="medAdmin"><span><strong>Medication Care</strong><small>Help giving medication</small></span><b>$45</b></label>
+<label class="ride-option"><input type="radio" name="service" value="labCollection"><span><strong>Sample Collection</strong><small>Lab sample pickup</small></span><b>$55</b></label>
+<label class="ride-option"><input type="radio" name="service" value="wellnessCheck"><span><strong>Wellness Check</strong><small>A longer home visit</small></span><b>$65</b></label>
+</fieldset>
+<div class="row-actions">
+<button class="button secondary" type="button" data-nav data-back="where">Back</button>
+<button class="button" type="button" id="to-details" data-nav>Continue</button>
+</div>
+</div>
+<div class="step" data-step="details" hidden>
+<h2 id="details-title" tabindex="-1">Confirm your visit</h2>
+<p class="lede">We confirm the time before any charge. Payment is PayPal or Apple Pay, the same checkout as the Help Line.</p>
+<label>Your name<input name="clientName" autocomplete="name" maxlength="100" required></label>
+<label>Email<input name="email" type="email" autocomplete="email" maxlength="200" required></label>
+<label>Phone (optional)<input name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
+<label>Pet’s name<input name="petName" maxlength="100" required></label>
+<label>Species<select name="species"><option>Dog</option><option>Cat</option><option>Rabbit</option><option>Bird</option><option>Other</option></select></label>
+<label>Preferred date and time<input name="preferredAt" type="datetime-local" required></label>
+<label>Notes (optional)<textarea name="notes" rows="3" maxlength="2000" placeholder="Gate codes, temperament, or what to bring."></textarea></label>
+<label class="trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
+<label class="consent"><input type="checkbox" name="acceptedPrivacy" required><span>I agree to the <a href="/privacy/" target="_blank" rel="noopener">privacy notice</a> and will keep my private visit link safe.</span></label>
+<p class="fare-line"><span>Visit total</span><strong id="request-fare">$35</strong></p>
+<div class="row-actions">
+<button class="button secondary" type="button" data-nav data-back="service">Back</button>
+<button class="button" id="request-send" type="submit">Request visit</button>
+</div>
+<p class="form-status" id="request-status" role="status"></p>
+<ol class="steps-mini">
+<li><span>1</span> Send the request. Save the private link.</li>
+<li><span>2</span> We confirm, then you can follow: on the way, caring for your pet, done.</li>
+<li><span>3</span> Pay on this page with PayPal or Apple Pay after confirmation.</li>
+</ol>
+</div>
+</form>
+<noscript><p>JavaScript is needed to request a visit. Email <a href="mailto:info@bayareaapps.com">info@bayareaapps.com</a>.</p></noscript>
+<footer class="ride-legal">
+<span>Bay Area Apps</span>
+<span>Help Line</span>
+<a href="/privacy/">Privacy</a>
+<a href="mailto:info@bayareaapps.com">info@bayareaapps.com</a>
+</footer>
+</section>
+
+<section class="sheet visit-portal" id="visit-portal" hidden aria-labelledby="portal-title">
+<div class="sheet-handle" aria-hidden="true"></div>
+<span class="status-pill" id="status-pill">Visit</span>
+<h1 id="portal-title">Your pet-care visit</h1>
+<h2 id="journey-title">Waiting for confirmation</h2>
+<p id="journey-note" class="visit-note"></p>
+<ol class="visit-progress" id="visit-progress" aria-label="Appointment progress"></ol>
+<div class="visit-summary" id="visit-summary"></div>
+<div class="pay-bar">
+<a class="button gold" id="visit-pay" hidden target="_blank" rel="noopener noreferrer">Pay with PayPal or Apple Pay</a>
+<p class="visit-note" id="visit-payment-note"></p>
+</div>
+<p class="form-status" id="portal-status" role="status"></p>
+<section class="visit-location" aria-labelledby="visit-location-title">
+<h2 id="visit-location-title">Pickup</h2>
+<p id="visit-address"></p>
+<div class="portal-actions">
+<a class="button secondary" id="visit-map" target="_blank" rel="noopener noreferrer" hidden>Open your address in Maps</a>
+</div>
+<label class="location-confirm"><input type="checkbox" id="portal-location-confirm"> I am at the visit address and want to share this location.</label>
+<div class="portal-actions">
+<button class="button secondary" type="button" id="portal-location-share">Share visit location</button>
+<button class="button secondary" type="button" id="portal-location-remove" hidden>Remove shared location</button>
+</div>
+<p class="form-status" id="location-status" role="status"></p>
+<p class="visit-note">Your address stays on this private page. We do not show our home, a live location, or how far away we are.</p>
+</section>
+<h2>Messages</h2>
+<ul class="visit-messages" id="visit-messages" aria-label="Visit messages"></ul>
+<form id="message-form" class="ride-form">
+<label for="visit-message">Message the business</label>
+<textarea id="visit-message" rows="3" maxlength="2000" required placeholder="Access notes or a time change"></textarea>
+<button class="button" id="message-send" type="submit">Send</button>
+</form>
+<div class="portal-actions">
+<button class="button secondary" type="button" id="visit-refresh">Refresh</button>
+<button class="button secondary" type="button" id="visit-copy">Copy private link</button>
+</div>
+<p class="visit-note">Keep this link private. Anyone with it can view the visit and send messages. Email <a href="mailto:info@bayareaapps.com">info@bayareaapps.com</a> for help.</p>
+</section>
+</main>
+<script src="/assets/visits.js?v=20261005.2" defer></script>
+</body>
+</html>
