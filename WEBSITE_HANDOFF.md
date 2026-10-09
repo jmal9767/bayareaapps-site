@@ -46,3 +46,6 @@ Both bayareaapps.com/paws-whiskers/ and /petassist-local/ returned HTTP 200 befo
 
 ### Remaining work / handoff
 Verify GitHub Pages publication after saving. Cloudflare account access is needed to investigate the 1010 block and authorize each owner device. Do not disable authentication or replace the sole business account. Do not claim real client transactions were tested.
+
+### October 8 verification update
+GitHub Pages deployment 37873054283 succeeded; both homepage links are live. App service-check run 37873272338 passed all seven read-only public checks from a GitHub runner: both service pages and standalone websites returned 200, Visits API health returned 200, Help Line CORS returned 204, and unauthenticated client-record access correctly returned 401. The earlier Cloudflare 1010 response was specific to this execution network, not proof of a global outage. The Xcode app built and launched on iPhone Simulator and Mac Catalyst in run 37872976295. Physical signing and authenticated account/device connections still require verification; no live client transaction was submitted.
