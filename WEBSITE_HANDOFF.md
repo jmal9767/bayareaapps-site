@@ -32,3 +32,17 @@ The public Visits page at `/petassist-local/` is now a map-first booking screen 
 
 ## October 5: owner location stays private
 Clients never receive the business service-area coordinates, label, map, or distance. The ride screen uses a decorative grid, not a live map. The business app still calculates distance for the owner only. Optional client location sharing still goes to the business and can be removed from the private page.
+
+## October 8, 2026 — Restore service navigation and combined app connections
+
+### Notes / purpose
+The owner requested both websites active and connected to one private iPhone/Mac app. This supersedes WEBSITES.md's prior instruction to remove cross-navigation.
+
+### Changes made
+Restored company and service links that had become noninteractive span elements. Added the existing account-based Visits portal to the legacy request page without moving records, replacing payment flows, or dropping private-link access. Corrected that page's canonical URL. Both existing service backends are referenced by the new PawsWhiskers Xcode project.
+
+### Validation
+Both bayareaapps.com/paws-whiskers/ and /petassist-local/ returned HTTP 200 before these changes. Cloudflare standalone sites and API return HTTP 403 / error 1010 from the execution environment, so live booking, payment and authenticated sync are NOT verified. Native build results and device setup are tracked in the app repository's CHANGELOG.md.
+
+### Remaining work / handoff
+Verify GitHub Pages publication after saving. Cloudflare account access is needed to investigate the 1010 block and authorize each owner device. Do not disable authentication or replace the sole business account. Do not claim real client transactions were tested.
